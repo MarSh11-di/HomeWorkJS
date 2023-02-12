@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ЗАВДАННЯ 1</title>
+   <link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body>
+   <h1>Завдання 1</h1>
+   <h2>Знайти суму, добуток та частку двох дійсних чисел (X, Y). Результат вивести у формі таблиці
+   </h2>
+   <script>
+      //1. Введення даних.
+      let x = parseFloat(prompt("Введiть число", "0"));
+      let y = parseFloat(prompt("Введiть число", "0"));
+      //2. Обчислення результату
+      let sum = x+y;
+      let mult = x*y;
+      let divi = x/y;
+      //3. Виведення результату
+      document.write(`
+   <table>
+      <tr>
+         <td><h3>Число Х</h3></td>   
+         <td><h3>Число Y</h3></td>
+         <td><h3>Сума</h3></td>
+         <td><h3>Добуток</h3></td>
+         <td><h3>Частка</h3></td>
+      </tr>
+      <tr>
+         <td><h3>${x.toFixed(2)}</h3></td>
+         <td><h3>${y.toFixed(2)}</h3></td>
+         <td><h3>${sum.toFixed(2)}</h3></td>
+         <td><h3>${mult.toFixed(2)}</h3></td>
+         <td><h3>${divi.toFixed(2)}</h3></td>
+      </tr>
+   </table>
+   `)
+</script>
+</body>
+</html>

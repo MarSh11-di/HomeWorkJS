@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Завдання 5</title>
+   <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+   <h1>Завдання 5</h1>
+   <h2>Дано кількість секунд, що пройшла від початку доби. Визначити скільки це годин і хвилин.
+   </h2>
+   <script>
+   //1. Введення даних
+   let seconds = parseInt(prompt("Введiть кiлькiсть секунд", "0"));
+    //2. Обчислення результату
+   let minutes = seconds/60;
+   let hours = minutes/60;
+   //3. Виведення результату
+   document.write(`<h3>Кількість секунд: ${seconds} сек.</h3>
+   <h3>Скiльки минуло часу: ${hours.toFixed(0)} год. ${minutes} хв.</h3>
+   `)
+   </script>
+</body>
+</html>

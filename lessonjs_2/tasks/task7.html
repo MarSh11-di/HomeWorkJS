@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Завдання 6</title>
+   <link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body>
+   <h1>Завдання 6</h1>
+   <h2>З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару окремо 
+      та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.
+   </h2>
+   <script>
+   //1. Введення даних
+   let priceProdukt1 = parseFloat(prompt("Введiть вартiсть 1 продукту", "0"));
+   let quantityProdukt1 = parseInt(prompt("Введiть кiлькiсть 1 продукту", "0"));
+   let priceProdukt2 = parseFloat(prompt("Введiть вартiсть 2 продукту", "0"));
+   let quantityProdukt2 = parseInt(prompt("Введiть кiлькiсть 2 продукту", "0"));
+   let priceProdukt3 = parseFloat(prompt("Введiть вартiсть 3 продукту", "0"));
+   let quantityProdukt3 = parseInt(prompt("Введiть кiлькiсть 3 продукту", "0"));
+   //2. Обчислення результату
+   let totalPrice1 = priceProdukt1*quantityProdukt1;
+   let totalPrice2 = priceProdukt2*quantityProdukt2;
+   let totalPrice3 = priceProdukt3*quantityProdukt3;
+   let totalAmount = totalPrice1+totalPrice2+totalPrice3;
+   //3. Виведення результату
+   document.write(` <h2>-----ЧЕК-----</h2>
+   <p class="nome">*****ТОВ "НОВАЧОК"*****</p>
+      <table>
+      <tr>
+         <td><h4>Назва товару</h4></td>   
+         <td><h4>Вартiсть</h4></td>
+         <td><h4>Кiлькiсть</h4></td>
+         <td><h4>Сума</h4></td>
+      </tr>
+      <tr>
+         <td>Товар N 1</td>
+         <td>${priceProdukt1.toFixed(2)}</td>
+         <td>${quantityProdukt1}</td>
+         <td>${totalPrice1.toFixed(2)} грн.</td>
+      </tr>
+      <tr>
+         <td>Товар N 2</td>
+         <td>${priceProdukt2.toFixed(2)}</td>
+         <td>${quantityProdukt2}</td>
+         <td>${totalPrice2.toFixed(2)} грн.</td>
+      </tr>
+      <tr>
+         <td>Товар N 3</td>
+         <td>${priceProdukt3.toFixed(2)}</td>
+         <td>${quantityProdukt3}</td>
+         <td>${totalPrice3.toFixed(2)} грн.</td>
+      </tr>
+   </table>
+   <h2>Загальна сума по чеку: ${totalAmount.toFixed(2)} грн.</h2>
+   <p class="nome">-----"ДЯКУЕМО ВАМ-----<br>
+      за те що вибрали наш магазин"</p> `)
+   </script>
+</body>
+</html>

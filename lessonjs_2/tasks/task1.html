@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Завдання 0</title>
+   <link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body>
+   <h1>Завдання 0</h1>
+      <h2>Обчислити значення виразів</h2>
+      <p> 1) S=a+12+b</p>
+      <p> 2) S1=√((a+b)/2a)) </p>
+      <p> 3) S2=∛((a+b)c) </p>
+      <p> 1) S3= sin(a/(-b)) </p>
+      <h2>Розвязання </h2> 
+   <script>
+      //1. Введення даних
+      let a = parseFloat(prompt("Введiть число", "0"));
+      let b = parseFloat(prompt("Введiть число", "0"));
+      let c = parseFloat(prompt("Введiть число", "0"));
+      //2. Обчислення результату
+      let s = a+12+b;
+      let s1 = Math.sqrt((a+b)/(2*a));
+      let s2 = Math.cbrt((a+b)*c);
+      let s3 = Math.sin((Math.PI/180)*(a/-b));
+      //3. Виведення результату
+      document.write(`<h2>S = ${s.toFixed(2)} </h2>
+      <h2> S1 = ${s1.toFixed(2)}</h2>
+      <h2> S2 = ${s2.toFixed(2)}</h2>
+      <h2> S3 = ${s3.toFixed(2)}</h2>
+      `);
+      
+   </script>
+   
+</body>
+</html>
+
