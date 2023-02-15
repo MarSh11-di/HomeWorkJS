@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Завдвння 5</title> 
+   <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+   <h1>Завдання 5</h1>
+   <h2>З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль). Вивести на екран назву транспортного засобу, яким він може керувати.
+   </h2> 
+   <script>
+//1. Введення даних
+var drivCategory = prompt("Введiть вашу категорiю водiя (A,B,C)", "B");    
+var result;
+//2. Обчислення i виведення результату 
+document.write(`<h3>Ви можете керувати:<h3>`)
+switch(drivCategory){
+   case "A":  document.write(`<h3>"Мотоциклами з обемом двигуна вiд 50см3 або потужнiстю електродвигуна вiд 4 кВт"<h3>`);
+   break;
+   case "B": document.write(`<h3>"Усiма видами легкових автомобiлей массою до 3500 кг, i загальним числом мiсць - 8"<h3>`);
+   break;
+   case "C": document.write(`<h3>"Усiма вантажними автомобілями"<h3>`);
+   break;
+   default: document.write(`<h3>"Ви ввели не вiрну категорiю"<h3>`);
+   break;
+}
+   </script>
+</body>

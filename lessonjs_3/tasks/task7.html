@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Завдвння 7</title>
+   <link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body>
+   <h1>Завдання 7</h1>
+   <h2>З клавіатури вводиться номер місяця. Вивести до якої пори він відноситься
+   </h2> 
+<script>
+//1. Введення даних
+let monthNumber = parseInt(prompt("Введiть номер мiсяця (з 1 до 12)", "5"));  
+
+//2. Обчислення i виведення результату 
+if (monthNumber>=1&& monthNumber<=2 )document.write(`<h3>"Цей мiсяць вiдноситься до ЗИМИ"<h3>`)
+else if(monthNumber==12) document.write(`<h3>"Цей мiсяць вiдноситься до ЗИМИ"<h3>`)
+else if(monthNumber>=3 && monthNumber<=5) document.write(`<h3>"Цей мiсяць вiдноситься до ВЕСНИ"<h3>`)
+else if(monthNumber>=6 && monthNumber<=8) document.write(`<h3>"Цей мiсяць вiдноситься до ЛIТА"<h3>`)
+else if(monthNumber>=9 && monthNumber<=11) document.write(`<h3>"Цей мiсяць вiдноситься до ОСIНI"<h3>`)
+   else{document.write(`<h3>"Ви ввели невiрний номер мiсяця"<h3>`)};
+
+</script>  
+</body>
+</html>

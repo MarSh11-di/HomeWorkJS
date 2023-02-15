@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Завдвння 3</title>
+   <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+   <h1>Завдання 3</h1>
+   <h2>Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.
+   </h2> 
+   <script>
+   //1. Введення даних
+   let guess1 = parseInt(prompt("Cпроба 1, введiть число вiд 1 до 5", "5"));  
+   let guess2 = parseInt(prompt("Cпроба 2, введiть число вiд 1 до 5", "4"));
+   let minNumber = 1, maxNumber = 5;
+   //2. Обчислення результату
+   let randomNumber = Math.floor(Math.random()*(maxNumber-minNumber +1))+ minNumber;
+   if (guess1==randomNumber || guess2==randomNumber) 
+   document.write(`<h3>Вiтаемо ви вгадали число ${randomNumber}</h3>`)
+   else {document.write(`<h3>Вибачте, але вам не вдалося вгадати число ${randomNumber}</h3>`)};
+   </script>
+</body>
+
+</html>
