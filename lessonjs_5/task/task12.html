@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 12</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у
+      кожній позиції вибирається як одне з чотирьох зображень. Вивести ці
+      зображення і повідомити виграш користувача (три перших зображення 100 грн,
+      три других – 200, три третіх – 500, три четвертих зображення – 1000грн).
+      Використати цикли і switch (для вибору зображення за номером).
+    </h2>
+
+    <script>
+      //1. Введення даних
+      let cherryFirst = 0;
+      let heartSecond = 0;
+      let lemonThird = 0;
+      let bananaFourth = 0;
+      //2. Обчислення результату
+      for (let i = 0; i < 3; i++) {
+        const randomPictures = 1 + Math.floor(Math.random() * 4);
+        switch (randomPictures) {
+          case 1:
+            document.write(`<img src="../img/cherry1.png" />`);
+            cherryFirst++;
+            break;
+          case 2:
+            document.write(`<img src="../img/heart2.png" />`);
+            heartSecond++;
+            break;
+          case 3:
+            document.write(`<img src="../img/lemon3.png" />`);
+            lemonThird++;
+            break;
+          case 4:
+            document.write(`<img src="../img/banana4.png" />`);
+            bananaFourth++;
+            break;
+        }
+      }
+      //3. Виведення результату
+      if (cherryFirst === 3)
+        document.write(`<h3>Ваш виграш складае 100 грн </h3>`);
+      else if (heartSecond === 3)
+        document.write(`<h3>Ваш виграш складае 200 грн</h3>`);
+      else if (lemonThird === 3)
+        document.write(`<h3>Ваш виграш складае 500 грн</h3>`);
+      else if (bananaFourth === 3)
+        document.write(`<h3>Ваш виграш складае 1000 грн</h3>`);
+      else document.write(`<h3>Ви нiчого не виграли АЛЕ НЕ ЗДАВАЙТЕСЬ</h3>`);
+    </script>
+  </body>
+</html>
