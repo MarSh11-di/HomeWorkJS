@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача6</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній) за зразком</h2>
+    <div>
+      <style>
+        div {
+          display: flex;
+          gap: 20px;
+        }
+      </style>
+      <script>
+        //1. Введення даних
+        let tabl;
+        let column;
+        let line;
+        let counter = 1;
+        //2. Обчислення результату
+        for (tabl = 1; tabl <= 3; tabl++) {
+          document.write(`<table>`);
+          for (let line = 1; line <= 3; line++) {
+            document.write(`<tr>`);
+            for (let column = 1; column <= 3; column++) {
+              document.write(`<td>${counter}</td>`);
+              counter++;
+            }
+            document.write(`</tr>`);
+          }
+          document.write(`</table> <br>`);
+        }
+      </script>
+    </div>
+  </body>
+</html>

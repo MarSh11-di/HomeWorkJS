@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 9</title>
+  </head>
+  <body>
+    <h2>
+      Користувач загадує число. Комп’ютер задає питання поки не вгадає число
+      користувача (використати confirm).
+    </h2>
+    <script>
+      //1. Введення даних
+      let numberUser = parseFloat(prompt("Загадайте число", "12"));
+      let guess;
+      let conf;
+      let stop = false;
+
+      do {
+        // немного сузила варианты правильного ответа((((
+        let max = numberUser + 2,
+          min = max - 5;
+        guess = min + Math.floor(Math.random() * (max - min + 1));
+        conf = confirm(`Ви загадали число ${guess}?`);
+        if (conf == true && guess == numberUser) {
+          stop = true;
+          document.write(`я вгадав`);
+        }
+        if (conf !== true && guess == numberUser) {
+          alert(`Ви кажете неправду`);
+        }
+        if (conf == true && guess !== numberUser) {
+          alert(`Ви кажете неправду`);
+        }
+      } while (!stop);
+    </script>
+  </body>
+</html>
