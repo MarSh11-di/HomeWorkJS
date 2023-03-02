@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 8</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Створити функцію, яка виводить банер (у функцію передаються: зображення,
+      заголовок та посилання, куди переходимо при кліку на зображення (тег img
+      повине знаходитись у середині тега a: "a img src="”шлях”" a"
+    </h2>
+    <script>
+      let content = "Звідки з’явився символ серця?";
+      let link = "https://piznayko.in.ua/zvidky-zyavyvsya-symvol-sertsya";
+      function getBanner() {
+        document.write(
+          `<div><h2> ${content} </h2><br> <a target="_blank" href="${link}"><img src="../img/heart2.png" alt="heart"></a></div> `
+        );
+      }
+      getBanner();
+    </script>
+  </body>
+</html>

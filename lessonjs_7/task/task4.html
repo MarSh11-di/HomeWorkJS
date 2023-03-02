@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 4</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька
+      результатів: кількість парних, кількість додатних, кількість більших за
+      100.
+    </h2>
+    <script>
+      function getResult(...numbers) {
+        let pairedNumbers = 0;
+        let positiveNumbers = 0;
+        let greaterNumbers = 0;
+        for (let i = 0; i < numbers.length; i++) {
+          if (numbers[i] % 2 === 0) pairedNumbers++;
+          if (numbers[i] >= 0) positiveNumbers++;
+          if (numbers[i] > 100) greaterNumbers++;
+        }
+        return { pairedNumbers, positiveNumbers, greaterNumbers };
+      }
+      let result = getResult(
+        parseFloat(prompt("Введiть  число", "160")),
+        parseFloat(prompt("Введiть  число", "-5")),
+        parseFloat(prompt("Введiть  число", "160"))
+      );
+      document.write(
+        ` <h3> Кількість парних =  ${result.pairedNumbers}  <br> Кількість додатних =  ${result.positiveNumbers} <br> Кількість більших за
+        100 =  ${result.greaterNumbers}</h3>`
+      );
+    </script>
+  </body>
+</html>

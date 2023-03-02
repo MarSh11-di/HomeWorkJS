@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 9</title>
+  </head>
+  <body>
+    <h2>
+      Дано покази температур (довільна кількість). Розробити функцію, яка
+      дозволить підрахувати кількість від’ємних показів температури.
+    </h2>
+    <script>
+      let countNegstiveTemperature = 0;
+      function getNegativeTemperature() {
+        let numberImpressions = parseInt(
+          prompt("Введiть кiлькiсть покзiв температури", "2")
+        );
+        for (let i = 0; i < numberImpressions; i++) {
+          let temperature = parseFloat(
+            prompt(`"Введiт показання температури ${i}"`, "-10")
+          );
+          if (temperature < 0) countNegstiveTemperature++;
+        }
+        return countNegstiveTemperature;
+      }
+      getNegativeTemperature();
+      document.write(
+        ` <h3> Кількість від’ємних показів температури =  ${countNegstiveTemperature} `
+      );
+    </script>
+  </body>
+</html>

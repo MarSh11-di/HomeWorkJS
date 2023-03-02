@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 10</title>
+  </head>
+  <body>
+    <h2>
+      Дано покази температур (довільна кількість). Розробити функцію, яка
+      дозволить знайти середнє значення для додатних показів температури.
+    </h2>
+    <script>
+      let countTemperature = 0;
+      let indicatorNumber = 0;
+      let averageTemperatura;
+      function getAverageTemperature() {
+        let numberImpressions = parseInt(
+          prompt("Введiть кiлькiсть покзiв температури", "2")
+        );
+        for (let i = 0; i < numberImpressions; i++) {
+          let temperature = parseFloat(
+            prompt(`"Введiт показання температури ${i}"`, "-10")
+          );
+          if (temperature > 0) {
+            countTemperature = countTemperature + temperature;
+            indicatorNumber++;
+          }
+        }
+        averageTemperatura = countTemperature / indicatorNumber;
+        return averageTemperatura;
+      }
+      getAverageTemperature();
+      document.write(
+        ` <h3> Cереднє значення для додатних показів температури =  ${averageTemperatura.toFixed(
+          1
+        )} `
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 0</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Створити функцію, яка за номером місяця повертає пору року, до якої
+      відноситься цей місяць.
+    </h2>
+    <script>
+      function getSeason(month) {
+        let result;
+        if (month <= 2 || month === 12) result = "ЗИМА";
+        else if (month <= 5) result = "ВЕСНА";
+        else if (month <= 8) result = "ЛIТО";
+        else if (month <= 11) result = "ОСIНЬ";
+
+        return result;
+      }
+      const whichMonth = parseInt(prompt("Введiть мiсяць вiд 1 до 12", "8"));
+      const season = getSeason(whichMonth);
+      document.write(` Пора року : ${season}`);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 3</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Створити окремі функції, які для 4 чисел знаходять: 1)суму; 2)добуток;
+      3)середнє арифметичне; 4)мінімальне значення.
+    </h2>
+    <script>
+      function getSum(a, b, c, d) {
+        let result = a + b + c + d;
+        return result;
+      }
+      function getMultipli(a, b, c, d) {
+        let result = a * b * c * d;
+        return result;
+      }
+      function getAverage(a, b, c, d) {
+        let result = (a + b + c + d) / 4;
+        return result;
+      }
+      function getMiniValue(a, b, c, d) {
+        let result = Math.min(a, b, c, d);
+        return result;
+      }
+
+      const number1 = parseFloat(prompt("Введiть перше число", "5"));
+      const number2 = parseFloat(prompt("Введiть друге число", "4"));
+      const number3 = parseFloat(prompt("Введiть трете число", "3"));
+      const number4 = parseFloat(prompt("Введiть четверте число", "2"));
+      const sum = getSum(number1, number2, number3, number4);
+      const multipli = getMultipli(number1, number2, number3, number4);
+      const average = getAverage(number1, number2, number3, number4);
+      const мiniValue = getMiniValue(number1, number2, number3, number4);
+      document.write(` <h3>Cумма чисел =  ${sum} </h3> `);
+      document.write(` <h3>Добуток чисел =  ${multipli}</h3> `);
+      document.write(
+        ` <h3>Середне арифметичне значення =  ${average.toFixed(1)}</h3> `
+      );
+      document.write(` <h3>Мiнiмальне значення =  ${мiniValue}</h3> `);
+    </script>
+  </body>
+</html>

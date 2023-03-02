@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 5</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Створити окремі функції, які переводять: Сантиметри у дюйми; Кілограми у
+      фунти; Кілометри у милі.
+    </h2>
+    <script>
+      let number = parseFloat(prompt("Введiть значення", "254"));
+      function getInch(a) {
+        return a * 0.3937;
+      }
+      function getIb(a) {
+        return a * 2.2046;
+      }
+      function getMile(a) {
+        return a * 0.6214;
+      }
+      let inch = getInch(number);
+      let ib = getIb(number);
+      let mile = getMile(number);
+      document.write(
+        ` <h3>${number} cантиметри  - це ${Math.ceil(
+          inch
+        )} дюймiв <br> ${number} кілограмiв -  це ${Math.ceil(
+          ib
+        )} фунтiв <br> ${number} кілометрiв  - це ${Math.ceil(mile)} миль</h3> `
+      );
+    </script>
+  </body>
+</html>
