@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 3</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».
+    </h2>
+    <script>
+      let arrNamesStudents = [
+        "Олга",
+        "Iван",
+        "Макар",
+        "Марiя",
+        "Iван",
+        "Cтепан",
+        "Iван",
+      ];
+      document.write(`<h3>Масив iмен : ${arrNamesStudents} </h3>`);
+      //Функцiя яка знаходить однаковi назви
+
+      function getResultNumberNames(arrNames, name) {
+        let namberIdenticalNames = 0;
+        for (let i = 0; i < arrNames.length; i++) {
+          if (arrNames[i] === name) namberIdenticalNames++;
+        }
+        return namberIdenticalNames;
+      }
+      let oneName = "Iван";
+      let numberIdenticalNames = getResultNumberNames(
+        arrNamesStudents,
+        oneName
+      );
+      document.write(
+        `<h3>ім’я ${oneName} зустрічається : ${numberIdenticalNames} рази</h3>`
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 7</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей
+      за: за весь рік; у першій половині року; у другій половині року; за літо;
+      за ІІ квартал; за парні місяці (з парними номерами); за місяці, які є
+      початковими у сезоні (весна, літо, осінь, зима).
+    </h2>
+    <script>
+      //Фунцiя вводу массиву платежiв за рiк
+      let months = 12;
+      function getPayments(numberMonths) {
+        let arrPayments = [];
+        for (let i = 0; i < numberMonths; i++) {
+          const payment = 5 + Math.floor(Math.random() * 1000);
+          arrPayments.push(payment);
+        }
+        return arrPayments;
+      }
+      let arrayPayments = getPayments(months);
+      document.write(`<h3> Масив платежiв: ${arrayPayments}</h3> `);
+
+      //Фунцiя виводу кількість грошей за перiод
+      function getSummPeriod(arrPayment, startPeriod, endPeriod) {
+        let sumPeriod = 0;
+        for (let i = startPeriod; i <= endPeriod; i++) {
+          sumPeriod += arrPayment[i - 1];
+        }
+        return sumPeriod;
+      }
+      let sumYear = getSummPeriod(arrayPayments, 1, 12);
+      document.write(`<h3> Сума платежiв за рiк: ${sumYear} </h3> `);
+      //
+      let sumFirstSixMonths = getSummPeriod(arrayPayments, 1, 6);
+      document.write(
+        `<h3> Сума платежiв за першу половину року: ${sumFirstSixMonths} </h3> `
+      );
+      //
+      let sumSecondSixMonths = getSummPeriod(arrayPayments, 7, 12);
+      document.write(
+        `<h3> Сума платежiв за другу половину року: ${sumSecondSixMonths} </h3> `
+      );
+      //
+      let sumSummer = getSummPeriod(arrayPayments, 6, 8);
+      document.write(`<h3> Сума платежiв за лiто: ${sumSummer} </h3> `);
+      //
+      let sumSecondQuarter = getSummPeriod(arrayPayments, 4, 6);
+      document.write(
+        `<h3> Сума платежiв за другий квартал: ${sumSecondQuarter} </h3> `
+      );
+      // //Фунцiя виводу кількість грошей за декiлька мicяцiв
+      function getSumFewMonths(arrPayment) {
+        let sum =
+          arrPayment[2] + arrPayment[5] + arrPayment[8] + arrPayment[11];
+        return sum;
+      }
+      let SumFewMonths = getSumFewMonths(arrayPayments);
+      document.write(
+        `<h3> Сума платежiв за місяцi, якi є
+      початковими у сезоні (весна, літо, осінь, зима): ${SumFewMonths} </h3> `
+      );
+      //
+      let sumFirstMonthSpring = getSummPeriod(arrayPayments, 3, 3);
+      document.write(
+        `<h3> Сума платежiв за місяць, який є
+      початковими у сезоні весна: ${sumFirstMonthSpring} </h3> `
+      );
+      //
+      let sumFirstMonthSummer = getSummPeriod(arrayPayments, 6, 6);
+      document.write(
+        `<h3> Сума платежiв за місяць, який є
+      початковими у сезоні лiто: ${sumFirstMonthSummer} </h3> `
+      );
+      //
+      //Фунцiя виводу кількість грошей за парнi мicяцiв
+      function getSummCoupleMonths(arrPayment) {
+        let sum = 0;
+        for (let i = 1; i <= arrPayment.length; i++) {
+          if (i % 2 === 0) sum += arrPayment[i - 1];
+        }
+        return sum;
+      }
+      let summCoupleMonths = getSummCoupleMonths(arrayPayments);
+      document.write(
+        `<h3> Сума платежiв за за парнi мicяцi: ${summCoupleMonths} </h3> `
+      );
+    </script>
+  </body>
+</html>

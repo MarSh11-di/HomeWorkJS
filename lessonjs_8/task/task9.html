@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 9</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Морський бій. Користувач вводить кількість клітинок одновимірного масиву
+      та кількість одиночних кораблів. Комп’ютер довільно розміщує ці одиночні
+      кораблі у масиві по один у клітинці (якщо у клітинці 0, то клітинка пуста,
+      якщо 1 – то це означає, що там є корабель. Користувач вводить номер
+      клітинки, куди стріляє. Гра продовжується до тих пір, поки не будуть
+      потоплені усі кораблі.
+    </h2>
+    <script>
+      let numberCell = parseInt(
+        prompt("Введiть кiлькiсть клiтинок поля", "10")
+      );
+      let numberShips = parseInt(prompt("Введiть кiлькiсть кораблiв", "3"));
+      //Функцiя вводить поле для гри з розмiщенням кораблiв
+      function getFieldArr(numCell, numShips) {
+        let arrField = [];
+        for (let i = 0; i < numCell; i++) {
+          arrField.push(0);
+        }
+        for (let i = 0; i < numShips; ) {
+          const random = 1 + Math.floor(Math.random() * numCell);
+          if (arrField[random - 1] === 0) arrField[random - 1] = 1;
+          numShips--;
+        }
+        return arrField;
+      }
+      let fieldArray = getFieldArr(numberCell, numberShips);
+      document.write(`<h3> Масив з кораблями: ${fieldArray}</h3> `);
+
+      //Цикл  гри
+      for (let i = 0; i < numberShips; ) {
+        let shootUser = parseInt(
+          prompt(`"Введiть клiтинку для вистрiлу вiд 1 до ${numberCell}"`, "4")
+        );
+        if (fieldArray[shootUser - 1] === 1) {
+          numberShips--;
+          alert(`Ви вбили корабель, залишилось ${numberShips}`);
+        } else alert(`Ви промахнулися, залишилось ${numberShips}`);
+      }
+    </script>
+  </body>
+</html>

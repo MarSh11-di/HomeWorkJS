@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 1</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Дано масив, який містить оцінки з К предметів. Знайти середній бал і
+      з’ясувати до якої категорії він відноситься (відмінник, двійочник (має
+      хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча
+      би одна трійка)).
+    </h2>
+    <script>
+      const itemsNumber = parseInt(prompt("Введiть кiлькiсть предметiв", "6"));
+      // Створюю масив даних
+      function getGrades(itemsNumber) {
+        let arrGrades = [];
+        for (let i = 0; i < itemsNumber; i++) {
+          const grade = parseInt(
+            prompt(`"Введiть ${i + 1} оцiнку вiд 2 до 5"`, "4")
+          );
+          arrGrades.push(grade);
+        }
+        return arrGrades;
+      }
+      let gradesList = getGrades(itemsNumber);
+      document.write(`<h3> Вашi оцiнки: ${gradesList}</h3> `);
+
+      // Функцiя яка вираховуе середнiй бал
+      function getAverageGrade(gradesList) {
+        let totalSumGrade = 0;
+        for (let i = 0; i < gradesList.length; i++) {
+          totalSumGrade += gradesList[i];
+        }
+        return totalSumGrade / itemsNumber;
+      }
+      let gradeAverage = getAverageGrade(gradesList);
+      document.write(`<h3>Середня оцiнка: ${Math.round(gradeAverage)} </h3>`);
+
+      // Функцiя яка вираховуе мiнiмальну оцiнку
+      function getMinNumber(gradesList) {
+        let minNumber = gradesList[1];
+        for (let i = 0; i < gradesList.length; i++) {
+          if (gradesList[i] < minNumber) minNumber = gradesList[i];
+        }
+        return minNumber;
+      }
+      let min = getMinNumber(gradesList);
+      document.write(`<h3>Ваш мiнiмальна оцiнка : ${min}</h3>`);
+
+      // Функцiя яка визначае категорiю
+      function getCategory(min) {
+        let result;
+        switch (min) {
+          case 2:
+            result = "Ви двійочник ";
+            break;
+          case 3:
+            result = "Ви трійочник ";
+            break;
+          case 4:
+            result = "Ви хорошист ";
+            break;
+          case 5:
+            result = "Ви відмінник ";
+            break;
+        }
+        return result;
+      }
+      let category = getCategory(min);
+      document.write(`<h3>Ваша категорiя: ${category}</h3>`);
+    </script>
+  </body>
+</html>

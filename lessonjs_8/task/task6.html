@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 6</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Дано послідовність цін товарів та назв (у окремих масивах). Вивести на
+      екран ті, які може собі дозволити користувач (кількість грошей задається).
+      Приклад збереження даних let productsPrices = [1000, 20, 31] let
+      productsTitles = [‘cheese’, ‘juice’, ‘bread’]
+    </h2>
+    <script>
+      // Функцiя вводу массивiв  назв товарiв
+      let numberProducts = 3;
+      function getArrProduct(numberProduct) {
+        let productArr = [];
+        for (let i = 0; i < numberProduct; i++) {
+          const product = prompt(`"Ввести ${i + 1} назву товара"`, "яблука");
+          productArr.push(product);
+        }
+        return productArr;
+      }
+      let arrProduct = getArrProduct(numberProducts);
+      document.write(`<h3> Масив товарiв: ${arrProduct}</h3> `);
+      // Функцiя вводу массивiв цiн на товари
+      function getArrPrice(numberProduct) {
+        let priceArr = [];
+        for (let j = 0; j < numberProduct; j++) {
+          const price = 5 + Math.floor(Math.random() * 100);
+          priceArr.push(price);
+        }
+        return priceArr;
+      }
+      let arrPrice = getArrPrice(numberProducts);
+      document.write(`<h3> Масив цiн: ${arrPrice}</h3> `);
+      //
+      const buyerMoney = parseFloat(prompt(`"Ввести  кількість грошей"`, "80"));
+      document.write(`<h3> Кiлькiсть грошей: ${buyerMoney}</h3> `);
+      //Функцiя виводу товарiв які може собі дозволити користувач
+
+      function getProductCanBuyBuyer(arrayProduct, arrayPrice, money) {
+        let productCanBuy = [];
+        for (let i = 0; i < arrayPrice.length; i++) {
+          if (arrayPrice[i] <= money) productCanBuy += arrayProduct[i];
+        }
+        return productCanBuy;
+      }
+      let productCanBuyBuyer = getProductCanBuyBuyer(
+        arrProduct,
+        arrPrice,
+        buyerMoney
+      );
+      document.write(
+        `<h3> Товари які може собі дозволити користувач: ${productCanBuyBuyer}</h3> `
+      );
+      // не понимаю почему товары ${productCanBuyBuyer} выводит друг за другом без запятой????????
+    </script>
+  </body>
+</html>

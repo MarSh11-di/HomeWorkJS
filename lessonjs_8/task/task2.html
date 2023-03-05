@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 2</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Дано масив, який зберігає кількість відвідувачів магазину протягом тижня.
+      Вивести на екран: 1. номери днів, протягом яких кількість відвідувачів
+      була меншою за 20; 2. номери днів, коли кількість відвідувачів була
+      мінімальною; 3. номери днів, коли кількість відвідувачів була
+      максимальною; 4. загальну кількість клієнтів у робочі дні та окремо
+      загальну кількість днів на вихідних.
+    </h2>
+    <script>
+      // Створюю масив даних
+      function getBuyersNumber(buyersNumber) {
+        let arrBuers = [];
+        for (let i = 0; i < 7; i++) {
+          const buyerNumberDay = parseInt(
+            prompt(`"Введiть кількість відвідувачів за ${i + 1} день"`, "4")
+          );
+          arrBuers.push(buyerNumberDay);
+        }
+        return arrBuers;
+      }
+      let buyerNumberWeek = getBuyersNumber(7);
+      document.write(
+        `<h3>Кількість відвідувачів магазину протягом тижня: ${buyerNumberWeek} </h3>`
+      );
+      // Функцiя яка вираховуе мiнiмальну кількість відвідувачів
+      function getMinNumberBuers(arrBuyerNumberWeek) {
+        let minNumber = arrBuyerNumberWeek[1];
+        for (let i = 0; i < arrBuyerNumberWeek.length; i++) {
+          if (arrBuyerNumberWeek[i] < minNumber)
+            minNumber = arrBuyerNumberWeek[i];
+        }
+        return minNumber;
+      }
+      let minNumberBuers = getMinNumberBuers(buyerNumberWeek);
+      document.write(
+        `<h3> Мінімальна кількість відвідувачів магазину 
+      : ${minNumberBuers} особи </h3>`
+      );
+      // Функцiя яка вираховуе максiмальну кількість відвідувачів
+      function getMaxNumberBuyers(arrBuyerNumberWeek) {
+        let maxNumber = arrBuyerNumberWeek[1];
+        for (let i = 0; i < arrBuyerNumberWeek.length; i++) {
+          if (arrBuyerNumberWeek[i] > maxNumber)
+            maxNumber = arrBuyerNumberWeek[i];
+        }
+        return maxNumber;
+      }
+      let maxNumberBuyers = getMaxNumberBuyers(buyerNumberWeek);
+      document.write(
+        `<h3>Максимальна кількість відвідувачів магазину 
+      : ${maxNumberBuyers} особи </h3>`
+      );
+      // Функцiя яка вираховуе днi
+      function getDay(arrBuyerNumberWeek, buyersNumber) {
+        let dayData = [];
+        for (let day = 1; day <= 7; day++) {
+          if (arrBuyerNumberWeek[day - 1] === buyersNumber) dayData += [day];
+        }
+        return dayData;
+      }
+      let dayMinBuyers = getDay(buyerNumberWeek, minNumberBuers);
+      document.write(
+        `<h3>Днi коли кiлькiсть відвідувачів магазину була
+      мінімальною: ${dayMinBuyers} </h3>`
+      );
+
+      let dayMaxBuyers = getDay(buyerNumberWeek, maxNumberBuyers);
+      document.write(
+        `<h3>Днi коли кiлькiсть відвідувачів магазину була
+      максимальною: ${dayMaxBuyers} </h3>`
+      );
+      // Функцiя яка вираховуе днi кількість відвідувачів була меншою за 20
+
+      function getDayLess20(arrBuyerNumberWeek, buyersNumber) {
+        let dayDataLess20 = [];
+        for (let day = 1; day <= 7; day++) {
+          if (arrBuyerNumberWeek[day - 1] < buyersNumber)
+            dayDataLess20 += [day];
+        }
+        return dayDataLess20;
+      }
+      let dayLess20 = getDayLess20(buyerNumberWeek, 20);
+      document.write(
+        `<h3>Днi коли кiлькiсть відвідувачів магазину була
+      меншою за 20: ${dayLess20} </h3>`
+      );
+      // Функцiя яка вираховуе загальну кількість клієнтів у робочі(не робочi) дні
+      function getSumBuyersWorkDays(arrBuyerNumberWeek, startWeek, endWeek) {
+        let SumBuyers = 0;
+        for (let i = startWeek; i <= endWeek; i++) {
+          SumBuyers += arrBuyerNumberWeek[i - 1];
+        }
+        return SumBuyers;
+      }
+      let SumBuyersWorkDays = getSumBuyersWorkDays(buyerNumberWeek, 1, 5);
+      document.write(
+        `<h3> Загальну кількість клієнтів у робочі дні була: ${SumBuyersWorkDays} осiб </h3>`
+      );
+      //Функцiя яка вираховуе загальну кількість днів на вихідних.
+      function getWeekend(startWeek, endWeek) {
+        let SumDay = 0;
+        for (let i = startWeek; i <= endWeek; i++) {
+          SumDay++;
+        }
+        return SumDay;
+      }
+      let SumDayWeekend = getWeekend(6, 7);
+      document.write(
+        `<h3> Загальну кількість днів на вихідних була: ${SumDayWeekend} днi </h3>`
+      );
+    </script>
+  </body>
+</html>

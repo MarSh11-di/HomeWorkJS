@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 8</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Дано одновимірний масив, у якому зберігається певна виграшна сума
+      (елементи заповнюються випадковим чином значеннями від -500 до 500).
+      Надаючи користувачу можливість вибирати номери елементів (поки він не
+      відмовиться). Знаходити сумарний виграш.
+    </h2>
+    <script>
+      //Функцiя вводу массиву виграшiв
+      let numbersAmountsWin = 3;
+      function getArrWinsAmounts(numberAmountWins) {
+        let amounts = [];
+        for (let i = 0; i < numberAmountWins; i++) {
+          const amount = -500 + Math.floor(Math.random() * (500 - -500 + 1));
+          amounts.push(amount);
+        }
+        return amounts;
+      }
+      let arrayWinsAmounts = getArrWinsAmounts(numbersAmountsWin);
+      document.write(`<h3> Масив виграшних сум: ${arrayWinsAmounts}</h3> `);
+      //Функцiя виводу  виграшноi суми гравця
+      function getSumWinPlayer(arrWinsAmount) {
+        let winSum = 0;
+        let caunt = 0;
+        for (let i = 0; i <= arrWinsAmount.length; i++) {
+          const choicePlayer = parseInt(
+            prompt(`"Назвiть номер вiд 0 до ${arrWinsAmount.length - 1} "`)
+          );
+          winSum += arrWinsAmount[choicePlayer];
+          const playerResponse = confirm("Ви бажаете продовжувати");
+          if (playerResponse === true) caunt++;
+          else break;
+        }
+        return winSum;
+      }
+      let sumWinPlayer = getSumWinPlayer(arrayWinsAmounts);
+      document.write(`<h3> Ваш виграш складае: ${sumWinPlayer}</h3> `);
+    </script>
+  </body>
+</html>

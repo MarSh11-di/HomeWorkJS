@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 4</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які
+      : • починаються на букву «А»; • перша і остання літери співпадають; •
+      складаються з більше ніш 5 символів;
+    </h2>
+    <script>
+      let arrNumbersPlates = [
+        "AB1735B",
+        "DE1529C",
+        "AC3746R",
+        "AM1735A",
+        "DB1748D",
+        "DE1735E",
+        "HN1D",
+        "SN1M",
+      ];
+      //let gyfy = arrNumbersPlates[0].length; длинна елемента в массиве
+      //let vgv = arrNumbersPlates[arrNumbersPlates.length - 1]; показывает последний eлeмент массива
+      //let vgv = arrNumbersPlates[0][arrNumbersPlates[0].length - 1]; показывает последнюю букву первого елемента массива
+      document.write(
+        `<h3>Масив номерів автомобілів : ${arrNumbersPlates} </h3>`
+      );
+      // Функцiя що підраховуе кількість номерів, які починаються на букву «А»
+      function getNumbersStartA(arrPlates, oneElement) {
+        let number = 0;
+        for (let i = 0; i < arrPlates.length; i++) {
+          if (arrPlates[i][0] === oneElement) number++;
+        }
+        return number;
+      }
+      let element = "A";
+      let numbersElementsA = getNumbersStartA(arrNumbersPlates, element);
+      document.write(
+        `<h3>Кількість номерів, які
+      починаються на букву ${element} дорiвнюе : ${numbersElementsA} </h3>`
+      );
+      // Функцiя що підраховуе кількість номерів, де перша і остання літери співпадають
+      function getSameFirstSecondElements(arrPlates) {
+        let number = 0;
+        for (let i = 0; i < arrPlates.length; i++) {
+          //let lastNumber = arrPlates[arrPlates.length - 1];
+          if (arrPlates[i][0] === arrPlates[i][arrPlates[i].length - 1])
+            number++;
+        }
+        return number;
+      }
+      let sameFirstSecondElements =
+        getSameFirstSecondElements(arrNumbersPlates);
+      document.write(
+        `<h3>Кількість номерів де перша і остання літери співпадають
+      дорiвнюе : ${sameFirstSecondElements} </h3>`
+      );
+      // Функцiя що підраховуе кількість номерів,  які складаються з більше ніш 5 символів;
+      function getNumberSymbolsMore(arrPlates, numberSymbols) {
+        let number = 0;
+        for (let i = 0; i < arrPlates.length; i++) {
+          if (arrPlates[i].length > numberSymbols) number++;
+        }
+        return number;
+      }
+      let numberSymbol = 5;
+      let numberSymbolsMore = getNumberSymbolsMore(
+        arrNumbersPlates,
+        numberSymbol
+      );
+      document.write(
+        `<h3>Кількість номерів,  які складаються з більше ніш 5 символів
+      дорiвнюе : ${numberSymbolsMore} </h3>`
+      );
+    </script>
+  </body>
+</html>

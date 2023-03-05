@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 5</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Дано послідовність оцінок учня. Підрахувати кількість: 1) двійок 2)
+      кількість хороших оцінок (добре, відмінно); 3) кількість оцінок, які нижче
+      середнього.
+    </h2>
+    <script>
+      // Функцiя вводу даних масиву
+      function getArrayScore(numberScore) {
+        let arrScore = [];
+        for (let i = 0; i < numberScore; i++) {
+          const scoreRandom = 2 + Math.floor(Math.random() * 4);
+          arrScore.push(scoreRandom);
+        }
+        return arrScore;
+      }
+      let scoreNumber = 10;
+      let arrayScore = getArrayScore(scoreNumber);
+      document.write(`<h3>Масив оцiнок : ${arrayScore} </h3>`);
+
+      // Функцiя виводу середньоi оцiнки
+      function getAveragScore(arrScore, numberScore) {
+        let averag;
+        let sum = 0;
+        for (let i = 0; i < arrScore.length; i++) {
+          sum += arrScore[i];
+          averag = sum / numberScore;
+        }
+        return averag;
+      }
+      let averagScore = getAveragScore(arrayScore, scoreNumber);
+      document.write(`<h3>Середня оцiнка : ${Math.round(averagScore)} </h3>`);
+      // Функцiя виводу кількостi оцiнок що дорiвнюе 2,4,5
+      function getNumbers(arrScore, score) {
+        let number = 0;
+        for (let i = 0; i < arrScore.length; i++) {
+          if (arrScore[i] === score) number++;
+        }
+        return number;
+      }
+      let numberScor2 = getNumbers(arrayScore, 2);
+      document.write(
+        `<h3>Кількiстi оцiнок що дорiвнюе 2 : ${numberScor2} </h3>`
+      );
+      let numberScor4 = getNumbers(arrayScore, 4);
+      document.write(
+        `<h3>Кількiстi оцiнок що дорiвнюе 4 : ${numberScor4} </h3>`
+      );
+      let numberScor5 = getNumbers(arrayScore, 5);
+      document.write(
+        `<h3>Кількiстi оцiнок що дорiвнюе 5 : ${numberScor5} </h3>`
+      );
+      // Функцiя виводу кількостi оцiнок які нижче середнього.
+      function getNumbersBelowAverage(arrScore, scoreAverag) {
+        let num = 0;
+        for (let i = 0; i < arrScore.length; i++) {
+          if (arrScore[i] < Math.round(scoreAverag)) num++;
+        }
+        return num;
+      }
+      let NumbersScoreBelowAverage = getNumbersBelowAverage(
+        arrayScore,
+        averagScore
+      );
+      document.write(
+        `<h3>Кількiстi оцiнок які нижче середнього : ${NumbersScoreBelowAverage} </h3>`
+      );
+    </script>
+  </body>
+</html>
