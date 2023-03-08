@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 10</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде
+      містити величину сплаченого податку у грн.
+    </h2>
+    <script>
+      let quantityElements = parseInt(
+        prompt("Введiть кiлькiсть елементiв", "8")
+      );
+      function arrayPrice(quantityElement) {
+        let arrPrice = [];
+        for (let i = 0; i < quantityElement; i++) {
+          const elements = 50 + Math.floor(Math.random() * (200 - 50 + 1));
+          arrPrice.push(elements);
+        }
+        return arrPrice;
+      }
+      let arrayPrices = arrayPrice(quantityElements);
+      document.write(`<h3> Массив з цiн: ${arrayPrices}</h3> `);
+      let tax = arrayPrices.map((name) => Math.floor(name * 0.2 * 100) / 100);
+      document.write(`<h3> Массив cплаченого податку: ${tax}</h3> `);
+    </script>
+  </body>
+</html>

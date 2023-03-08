@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 8</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Дано масив номерів авто. Сформувати новий масив тих, які починаються на
+      «А»
+    </h2>
+    <script>
+      let arrNumbersPlates = [
+        "AB1735B",
+        "DE1529C",
+        "AC3746R",
+        "AM1735A",
+        "DB1748D",
+        "DE1735E",
+        "HN1D",
+        "SN1M",
+      ];
+      document.write(
+        `<h3>Масив номерів автомобілів : ${arrNumbersPlates} </h3>`
+      );
+
+      let newArrNumbersPlates = arrNumbersPlates.filter(
+        (plate, index, baseArrRef) => plate[0] == "A"
+      );
+      document.write(`<h3> Новий мвсив тих, які починаються на
+      «А»: ${newArrNumbersPlates}</h3> `);
+    </script>
+  </body>
+</html>

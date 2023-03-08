@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 2</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Користувач вводить кількість елементів. Створити масив, у якому перша
+      половина заповнена 1-цями, а друга заповнена 7-ками.
+    </h2>
+    <script>
+      let quantityElements = parseInt(
+        prompt("Введiть кiлькiсть елементiв", "6")
+      );
+      let arrayQuantityElements = new Array(quantityElements).fill(1);
+      let newArrayQuantityElements = arrayQuantityElements.fill(
+        7,
+        Math.round(arrayQuantityElements.length / 2)
+      );
+      document.write(`<h3> Массив: ${newArrayQuantityElements}</h3> `);
+    </script>
+  </body>
+</html>

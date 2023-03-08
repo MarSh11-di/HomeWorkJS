@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 6</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Дано масив елементів. Усі елементи, які більші за перший елемент помножити
+      на 2
+    </h2>
+    <script>
+      let quantityElements = parseInt(
+        prompt("Введiть кiлькiсть елементiв", "8")
+      );
+      function arrayQuantityElement(quantityElement) {
+        let arrElement = [];
+        for (let i = 0; i < quantityElement; i++) {
+          const elements = 20 + Math.floor(Math.random() * (50 - 20 + 1));
+          arrElement.push(elements);
+        }
+        return arrElement;
+      }
+      let arrayElements = arrayQuantityElement(quantityElements);
+      document.write(`<h3> Массив: ${arrayElements}</h3> `);
+      //
+      arrayElements.forEach((element, index, baseArrRef) => {
+        if (element > baseArrRef[0])
+          document.write(`<h3> Елемент ${index + 1} помножений
+      на 2: ${element * 2}</h3> `);
+      });
+    </script>
+  </body>
+</html>
