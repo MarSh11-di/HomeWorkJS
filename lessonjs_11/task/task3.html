@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 3</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Морський бій. Випадковим чином на двовимірному полі розміром 6*6
+      розташовується 5 кораблів. Користувач стріляє вказуючи координати. Гра
+      продовжується поки не потоплено усі кораблі або у користувача не
+      закінчаться снаряди.
+    </h2>
+    <script>
+      //Формуемо двовимiрний масив
+      function getArrayEmpty(rowNum, columnNum) {
+        let row = [];
+        for (let i = 0; i < rowNum; i++) {
+          let column = [];
+          for (let j = 0; j < columnNum; j++) {
+            column.push(0);
+          }
+          row.push(column);
+        }
+        return row;
+      }
+      let tableArray = getArrayEmpty(6, 6);
+      ///
+      function getFiledGame(tableArr, shipNumbers, max) {
+        while (shipNumbers != 0) {
+          let row = 1 + Math.floor(Math.random() * max);
+          let column = 1 + Math.floor(Math.random() * max);
+          if (tableArr[row][column] === 0) {
+            // !!!!!Я НЕ ПОНИМАЮ почему тут переодически выдает ошибку,не может прочитать "tableArr[row][column]" обьясните пожалуйста!!!!
+            tableArr[row][column] = 1;
+            shipNumbers -= 1;
+          }
+        }
+        return tableArr;
+      }
+      let filedOfPlay = getFiledGame(tableArray, 5, 6);
+      document.write(`<h3> Двовимiрний массив  : ${filedOfPlay}</h3> `);
+      ///
+      function gateGame(filedArray, shellsNumber, shipsNumber) {
+        do {
+          let askRow = parseInt(
+            prompt("Введiть значення по горизонталi вiд 0 до 5", "2")
+          );
+          let askColumn = parseInt(
+            prompt("Введiть значення по вертикалi вiд 0 до 5", "4")
+          );
+          if (filedArray[askRow][askColumn] === 1) {
+            shipsNumber -= 1;
+            shellsNumber -= 1;
+            alert(
+              `Ви потопили крабель, у вас залишилось ${shipsNumber}кораблiв i ${shellsNumber}снарядiв `
+            );
+          } else {
+            shellsNumber -= 1;
+            alert(
+              `Ви не попали у вас залишилось ${shipsNumber}кораблiв i ${shellsNumber}снарядiв `
+            );
+          }
+        } while (shipsNumber !== 0 && shellsNumber !== 0);
+        return filedArray;
+      }
+    </script>
+  </body>
+</html>

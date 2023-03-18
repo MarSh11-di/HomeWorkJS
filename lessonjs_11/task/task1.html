@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 1</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>Знайти суми елементів у вказаній області</h2>
+    <script>
+      //Формуемо двовимiрний масив
+      function getRandomNumber(min, max) {
+        return min + Math.floor(Math.random() * (max - min + 1));
+      }
+      //2
+      function getArrRandom(arrayLehgth, min, max) {
+        let arr = new Array(arrayLehgth)
+          .fill(0)
+          .map(() => getRandomNumber(min, max));
+        return arr;
+      }
+      //3
+      function getTableArray(rowsNumber, columnNumber, min, max) {
+        let arrayTable = new Array(rowsNumber)
+          .fill(0)
+          .map(() => getArrRandom(columnNumber, min, max));
+        return arrayTable;
+      }
+      let taableArray = getTableArray(4, 4, 20, 100);
+      document.write(`<h3> Двовимiрний массив  : ${taableArray}</h3> `);
+
+      // Формування масиву зв допомогою for для себе
+      /*function getArrRandom(arrayLehgth, min, max) {
+              const arr = [];
+              for (let i = 0; i < arrayLehgth; i++) {
+                let randomRow = getRandomNumber(min, max);
+                arr.push(randomRow);
+              }
+              return arr;
+            }*/
+      /*function getTableArray(rowsNumber, columnNumber, min, max) {
+        const table = [];
+        for (let i = 0; i < rowsNumber; i++) {
+          const rowRandom = getArrRandom(columnNumber, min, max);
+          table.push(rowRandom);
+        }
+        return table;
+      }*/
+      //Знаходження сум по завданню
+      //1
+      function getSum00(table) {
+        let sum = 0;
+        for (let row = 0; row < Math.round(table.length / 2); row++) {
+          for (
+            let column = 0;
+            column < Math.round(table[row].length / 2);
+            column++
+          ) {
+            sum += table[row][column];
+          }
+        }
+        return sum;
+      }
+      let sum00 = getSum00(taableArray);
+      document.write(
+        `<h3> Сума елементів у  області [0,1][0,1] : ${sum00}</h3> `
+      );
+      //2
+      function getSum02(table) {
+        let sum = 0;
+        for (let row = 0; row < Math.round(table.length / 2); row++) {
+          for (
+            let column = Math.round(table[row].length / 2);
+            column < table[row].length;
+            column++
+          ) {
+            sum += table[row][column];
+          }
+        }
+        return sum;
+      }
+      let sum02 = getSum02(taableArray);
+      document.write(
+        `<h3> Сума елементів у  області [0,1][2,3] : ${sum02}</h3> `
+      );
+      //3
+      function getSum23(table) {
+        let sum = 0;
+        for (
+          let row = Math.round(table.length / 2);
+          row < table.length;
+          row++
+        ) {
+          for (
+            let column = 0;
+            column < Math.round(table[row].length / 2);
+            column++
+          ) {
+            sum += table[row][column];
+          }
+        }
+        return sum;
+      }
+      let sum23 = getSum23(taableArray);
+      document.write(
+        `<h3> Сума елементів у  області [2,3][0,1] : ${sum23}</h3> `
+      );
+      //4
+      function getSum2323(table) {
+        let sum = 0;
+        for (
+          let row = Math.round(table.length / 2);
+          row < table.length;
+          row++
+        ) {
+          for (
+            let column = Math.round(table[row].length / 2);
+            column < table[row].length;
+            column++
+          ) {
+            sum += table[row][column];
+          }
+        }
+        return sum;
+      }
+      let sum2323 = getSum2323(taableArray);
+      document.write(
+        `<h3> Сума елементів у  області [2,3][2,3] : ${sum2323}</h3> `
+      );
+
+      //5) Суму парних рядків (якщо вважати 0 як парне число, якщо нi тодi змiнити row = 2)
+      function getSumDonbleRows(table) {
+        let sum = 0;
+        for (let row = 0; row < table.length; row += 2) {
+          for (let column = 0; column < table[row].length; column++) {
+            sum += table[row][column];
+          }
+        }
+        return sum;
+      }
+      let sumDonbleRows = getSumDonbleRows(taableArray);
+      document.write(`<h3> Сума парних рядків : ${sumDonbleRows}</h3> `);
+      //
+      //6) Суму непарних стовпців
+
+      function getSumUnpairedColumns(table) {
+        let sum = 0;
+        for (let row = 0; row < table.length; row++) {
+          for (let column = 1; column < table[row].length; column += 2) {
+            sum += table[row][column];
+          }
+        }
+        return sum;
+      }
+      let sumUnpairedColumns = getSumUnpairedColumns(taableArray);
+      document.write(
+        `<h3> Сума непарних стовпців : ${sumUnpairedColumns}</h3> `
+      );
+      //7) У парних рядках – непарні стовпці, у непарних – парні.
+      //a) Функцiя для снахо8дження суми у парних рядках – непарні стовпці
+      function getSumDonbleRowsUnpairedColumns(table) {
+        let sum = 0;
+        for (let row = 0; row < table.length; row += 2) {
+          for (let column = 1; column < table[row].length; column += 2) {
+            sum += table[row][column];
+          }
+        }
+        return sum;
+      }
+      let sumDonbleRowsUnpairedColumns =
+        getSumDonbleRowsUnpairedColumns(taableArray);
+      document.write(
+        `<h3> Сума парних рядках – непарні стовпці : ${sumDonbleRowsUnpairedColumns}</h3> `
+      );
+      //б) у непарних – парні.
+      function getSumUnpairedRowsDonbleColumns(table) {
+        let sum = 0;
+        for (let row = 1; row < table.length; row += 2) {
+          for (let column = 0; column < table[row].length; column += 2) {
+            sum += table[row][column];
+          }
+        }
+        return sum;
+      }
+      let sumUnpairedRowsDonbleColumns =
+        getSumUnpairedRowsDonbleColumns(taableArray);
+      document.write(
+        `<h3> Сума непарних рядках – парні стовпці : ${sumUnpairedRowsDonbleColumns}</h3> `
+      );
+
+      // Одна функцiя для знаходження суми У парних рядках – непарні стовпці, у непарних – парні.
+
+      function getSumDonbleRowsUnpairedColumnsUnpairedRowsDonbleColumns(table) {
+        let sum1 = 0;
+        let sum2 = 0;
+        for (let row1 = 0; row1 < table.length; row1 += 2) {
+          for (let column1 = 1; column1 < table[row1].length; column1 += 2) {
+            sum1 += table[row1][column1];
+          }
+        }
+        for (let row2 = 1; row2 < table.length; row2 += 2) {
+          for (let column2 = 0; column2 < table[row2].length; column2 += 2) {
+            sum2 += table[row2][column2];
+          }
+        }
+        return sum1 + sum2;
+      }
+      let sumDonbleRowsUnpairedColumnsUnpairedRowsDonbleColumns =
+        getSumDonbleRowsUnpairedColumnsUnpairedRowsDonbleColumns(taableArray);
+      document.write(
+        `<h3> Сума у парних рядках – непарні стовпці, у непарних – парні.: ${sumDonbleRowsUnpairedColumnsUnpairedRowsDonbleColumns}</h3> `
+      );
+    </script>
+  </body>
+</html>
