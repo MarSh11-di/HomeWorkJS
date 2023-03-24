@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під
+      час сортування бульбашкою
+    </h2>
+    <script>
+      function getRandomNumber(min, max) {
+        return min + Math.floor(Math.random() * (max - min + 1));
+      }
+      //2 Формую одновимiрний масив
+      function getArrRandom(arrayNumber, min, max) {
+        let arr = new Array(arrayNumber)
+          .fill()
+          .map((item) => getRandomNumber(min, max));
+        return arr;
+      }
+      let array = getArrRandom(30, 1, 20);
+      document.write(`<h3> Одновимiрний массив  : ${array}</h3> `);
+
+      /// Сортування бульбашкою
+      function getSortBubble(arr) {
+        let counterChenged = 0;
+        do {
+          changed = false;
+          for (i = 1; i < arr.length; i++) {
+            if (arr[i - 1] > arr[i]) {
+              [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
+              changed = true;
+              counterChenged++;
+            }
+          }
+        } while (changed);
+        return [arr, counterChenged];
+      }
+      let arraeChanged = getSortBubble(array);
+      document.write(
+        `<h3>Вiдсортований одновимiрний массив  : ${arraeChanged[0]}<br>Кiлькiсть обмiнiв : ${arraeChanged[1]} </h3> `
+      );
+    </script>
+  </body>
+</html>

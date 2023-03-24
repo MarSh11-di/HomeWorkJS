@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 3</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під
+      час сортування включеннями.
+    </h2>
+    <script>
+      function getRandomNumber(min, max) {
+        return min + Math.floor(Math.random() * (max - min + 1));
+      }
+      //2 Формую одновимiрний масив
+      function getArrRandom(arrayNumber, min, max) {
+        let arr = new Array(arrayNumber)
+          .fill()
+          .map((item) => getRandomNumber(min, max));
+        return arr;
+      }
+      let array = getArrRandom(30, 1, 20);
+      document.write(`<h3> Одновимiрний массив  : ${array}</h3> `);
+
+      // сортування включеннями
+      function getArrayByInclusion(arr) {
+        let countChange = 0;
+        for (i = 1; i < arr.length; i++) {
+          const key = arr[i];
+          let indexK = i - 1;
+          while (indexK >= 0 && arr[indexK] > key) {
+            [arr[indexK], arr[indexK + 1]] = [arr[indexK + 1], arr[indexK]];
+            indexK -= 1;
+            countChange++;
+          }
+        }
+        return [arr, countChange];
+      }
+      let arrayByInclusion = getArrayByInclusion(array);
+      document.write(
+        `<h3> Одновимiрний массив пiсля сортування  включеннями : ${arrayByInclusion[0]} <br> Кiлькiсть обмінів під час сортування :${arrayByInclusion[1]} </h3> `
+      );
+    </script>
+  </body>
+</html>

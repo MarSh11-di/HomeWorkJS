@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 6</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук
+      визначити, чи є у масиві ім’я довжиною 5 символів і під яким індексом.
+    </h2>
+    <script>
+      let arrNamesStudents = [
+        "Olga",
+        "May",
+        "Makar",
+        "Marianna",
+        "Diana",
+        "Stepan",
+        "Andrii",
+        "Akulina",
+      ];
+      document.write(`<h3> Одновимiрний массив  : ${arrNamesStudents}</h3> `);
+      function gatArrayByInclusion(arr) {
+        for (i = 1; i < arr.length; i++) {
+          let kay = arr[i].length;
+          let indexK = i - 1;
+          while (indexK >= 0 && arr[indexK].length > arr[indexK + 1].length) {
+            [arr[indexK], arr[indexK + 1]] = [arr[indexK + 1], arr[indexK]];
+            indexK -= 1;
+          }
+        }
+        return arr;
+      }
+      let arrayByInclusion = gatArrayByInclusion(arrNamesStudents);
+      document.write(
+        `<h3> Одновимiрний массив пiсля сортування  включеннями : ${arrayByInclusion}</h3> `
+      );
+      function getBinarArrayNameLength(arr, nameLength) {
+        let start = 0;
+        let end = arr.length - 1;
+        const middleResult = Math.floor((start + end) / 2);
+        while (start < end) {
+          if (arr[middleResult].length === nameLength)
+            return [true, middleResult];
+          if (arr[middleResult].length < nameLength) start = middleResult;
+          else if (arr[middleResult].length > nameLength) end = middleResult;
+        }
+        return [false, middleResult];
+      }
+      let binarArrayNameLength = getBinarArrayNameLength(arrayByInclusion, 5);
+      document.write(
+        `<h3> чи є у масиві ім’я довжиною 5 символів: ${binarArrayNameLength[0]}<br> Iндекс пiд яким знаходиться ім’я довжиною 5 символів: ${binarArrayNameLength[1]} </h3> `
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 5</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук
+      визначити, чи є у масиві ім’я «Olga» і під яким індексом.
+    </h2>
+    <script>
+      let arrNamesStudents = [
+        "Olga",
+        "Ivan",
+        "Makar",
+        "Maria",
+        "Diana",
+        "Stepan",
+        "Andrii",
+        "Oleg",
+      ];
+      document.write(`<h3> Одновимiрний массив  : ${arrNamesStudents}</h3> `);
+      function gatArrayByInclusion(arr) {
+        for (i = 1; i < arr.length; i++) {
+          let kay = arr[i][0];
+          let indexK = i - 1;
+          while (indexK >= 0 && arr[indexK][0] > arr[indexK + 1][0]) {
+            [arr[indexK], arr[indexK + 1]] = [arr[indexK + 1], arr[indexK]];
+            indexK -= 1;
+          }
+        }
+        return arr;
+      }
+      let arrayByInclusion = gatArrayByInclusion(arrNamesStudents);
+      document.write(
+        `<h3> Одновимiрний массив пiсля сортування  включеннями : ${arrayByInclusion}</h3> `
+      );
+      //
+      function getBinarArray(arr, nome) {
+        let start = 0;
+        let end = arr.length - 1;
+        while (start < end) {
+          const resultMiddle = Math.floor((start + end) / 2);
+          if (arr[resultMiddle][0] === nome[0] && arr[resultMiddle] === nome)
+            return [true, resultMiddle];
+          if (arr[resultMiddle][0] < nome[0]) start = resultMiddle;
+          else if (arr[resultMiddle][0] > nome[0]) end = resultMiddle;
+        }
+        return [false, resultMiddle];
+      }
+      let binarResult = getBinarArray(arrayByInclusion, "Olga");
+      document.write(
+        `<h3> чи є у масиві ім’я «Olga»: ${binarResult[0]}<br> Iндекс пiд яким знаходиться ім’я «Olga»: ${binarResult[1]} </h3> `
+      );
+    </script>
+  </body>
+</html>

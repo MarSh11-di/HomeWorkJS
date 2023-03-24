@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 4</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Для розглянутих методів сортування спробувати вивести етапи сортування
+      шляхом виведення відповідних таблиць за зразком.
+    </h2>
+    <script>
+      function getRandomNumber(min, max) {
+        return min + Math.floor(Math.random() * (max - min + 1));
+      }
+      //2 Формую одновимiрний масив
+      function getArrRandom(arrayNumber, min, max) {
+        let arr = new Array(arrayNumber)
+          .fill()
+          .map((item) => getRandomNumber(min, max));
+        return arr;
+      }
+      let array = getArrRandom(4, 1, 20);
+      document.write(`<h3> Одновимiрний массив  : ${array}</h3> `);
+
+      /// Сортування бульбашкою
+      let array1 = [...array];
+      document.write(`<table border = "2px">`);
+      do {
+        changed = false;
+        for (i = 1; i < array1.length; i++) {
+          if (array1[i - 1] > array1[i]) {
+            [array1[i - 1], array1[i]] = [array1[i], array1[i - 1]];
+            changed = true;
+            document.write(`<tr>`);
+            document.write(`<td>${array1}</td>`);
+            document.write(`</tr>`);
+          }
+        }
+      } while (changed);
+      document.write(`</table> <br>`);
+
+      /// Сортування змішуванням
+      let array2 = [...array];
+      document.write(`<table border='2px'>`);
+      let leftIndex = 0;
+      let rightIndex = array2.length - 1;
+      while (leftIndex < rightIndex) {
+        for (let i = leftIndex; i < rightIndex; i++) {
+          if (array2[i] > array2[i + 1]) {
+            [array2[i], array2[i + 1]] = [array2[i + 1], array2[i]];
+          }
+        }
+        rightIndex--;
+        for (let i = rightIndex; i > leftIndex; i--) {
+          if (array2[i - 1] > array2[i]) {
+            [array2[i - 1], array2[i]] = [array2[i], array2[i - 1]];
+          }
+        }
+        leftIndex++;
+        document.write(`<tr>`);
+        document.write(`<td>${array2}</td>`);
+        document.write(`</tr>`);
+      }
+      document.write(`</table><br>`);
+
+      // сортування включеннями
+      let array3 = [...array];
+      document.write(`<table border='2px'>`);
+      for (i = 1; i < array3.length; i++) {
+        const key = array3[i];
+        let indexK = i - 1;
+        while (indexK >= 0 && array3[indexK] > key) {
+          [array3[indexK], array3[indexK + 1]] = [
+            array3[indexK + 1],
+            array3[indexK],
+          ];
+          indexK -= 1;
+        }
+        document.write(`<tr>`);
+        document.write(`<td>${array3}</td>`);
+        document.write(`</tr>`);
+      }
+      document.write(`</table>`);
+    </script>
+  </body>
+</html>
