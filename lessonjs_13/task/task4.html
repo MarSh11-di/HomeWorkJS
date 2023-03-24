@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 4</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      З використанням замикань розробити ітератор, тобто функцію, що буде
+      поступово за окремими викликами видавати по одну букву наперед заданого
+      слова. З використанням нього розробити гру «Прекладач». Виводимо для
+      користувача опис цього слова і по одну букву користувач вводить переклад
+      цього слова. Підрахувати кількість вгаданих букв.
+    </h2>
+    <script>
+      function getWordByLetter(word) {
+        let i = 1 - 1;
+        function get() {
+          let letter = word.charAt(i);
+          i++;
+          return letter;
+        }
+        return get;
+      }
+      let words = "Ukraina";
+      let wordByLetter = getWordByLetter(words);
+
+      function getGame(word) {
+        let numberMuves = 0;
+        let countGuessedLetters = 0;
+        do {
+          const riddle = prompt(
+            "Найкраща краiна у свiтi? Вказуйте по однiй буквi англiйськими лiтерами, перша лiтера з великоi букви",
+            "U"
+          );
+          let letter = wordByLetter();
+          if (riddle === letter) {
+            alert("Ви вгадали букву");
+            countGuessedLetters++;
+          } else alert("Ви не вгадали букву, подумайте краще");
+          numberMuves++;
+        } while (numberMuves < word.length);
+        return countGuessedLetters;
+      }
+
+      let game = getGame(words);
+      document.write(
+        `<h3> Було загадане слово "Ukraina", ви вгадали ${game} лiтер</h3> `
+      );
+    </script>
+  </body>
+</html>

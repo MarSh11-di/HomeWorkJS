@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 2t</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Нехай x_0=x_1=1, x_i=x_i-1+2x_i-2 де i= 2,3.. Визначити x_n. Розв’язати з
+      використанням рекурсивних і нерекурсивних алгоритмів
+    </h2>
+    <script>
+      function getX_n(number) {
+        if (number === 0 || number === 1) return 1;
+        else {
+          let sum;
+          let n_0 = 1;
+          let n_1 = 1;
+          for (let i = 2; i <= number; i++) {
+            sum = n_1 + 2 * n_0;
+            n_0 = n_1;
+            n_1 = sum;
+          }
+          return sum;
+        }
+      }
+      let x_n = getX_n(3);
+      document.write(
+        `<h3> Визначення X_n нерекурсивним алгоритмом: ${x_n} </h3> `
+      );
+
+      // Рекурсивний алгоритм
+      function getRekursivX_n(number) {
+        if (number === 0 || number === 1) return 1;
+        else return getRekursivX_n(number - 1) + 2 * getRekursivX_n(number - 2);
+      }
+      let rekursivX_n = getRekursivX_n(3);
+      document.write(
+        `<h3> Визначення X_n рекурсивним алгоритмом: ${rekursivX_n} </h3> `
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 1</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Нехай X_0 = 1, X_i = X_i-1 +2i де i=1,2... Визначити X_10. Розв’язати з
+      використанням рекурсивних і нерекурсивних алгоритмів
+    </h2>
+    <script>
+      // Нрекурсивний алгоритм
+      function getX_10(number) {
+        if (number == 0) return 1;
+        else {
+          let x_0 = 1;
+          let sum;
+          for (let i = 1; i <= number; i++) {
+            sum = x_0 + 2 * [i];
+            x_0 = sum;
+          }
+          return sum;
+        }
+      }
+      let x_10 = getX_10(10);
+      document.write(
+        `<h3> Визначення X_10 нерекурсивним алгоритмом: ${x_10} </h3> `
+      );
+      // Рекурсивний алгоритм
+      function getRekursMetodX_10(number) {
+        if (number === 0) return 1;
+        else return getRekursMetodX_10(number - 1) + 2 * number;
+      }
+      let rekursX_10 = getRekursMetodX_10(10);
+      document.write(
+        `<h3> Визначення X_10 рекурсивним алгоритмом: ${rekursX_10} </h3> `
+      );
+    </script>
+  </body>
+</html>

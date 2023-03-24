@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 5</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Тренажер додавання. Кожні 10 секунд користувачу задають випадковий приклад
+      з додавання двох цифр і робиться перевірка.
+    </h2>
+    <script>
+      function getRandonNumber() {
+        return 1 + Math.floor(Math.random() * 20);
+      }
+      ///
+      function getSum() {
+        let number1 = getRandonNumber();
+        let number2 = getRandonNumber();
+        const sum = number1 + number2;
+        let example = parseInt(
+          prompt(`"Ваша вiдповiдь ${number1} + ${number2}"`)
+        );
+        if (example === sum) alert("Ви вирiшили вiрно");
+        else alert("Упс вiдповiдь не вiрна");
+      }
+      let chekSum = setInterval(getSum, 10000);
+      setTimeout(() => clearInterval(chekSum), 30000);
+      //!!!ПОЯСНIТЬ БУДЬ ЛАСКА!!! Чому якщо у параметри функцii я добавлю max (function getSum(MAX)) , а потiм у let chekSum = setInterval(ДОБАВЛЮ ЦИФРУ getSum (10), 10000), то setInterval спрацьовуе тiльки один раз, чому?
+    </script>
+  </body>
+</html>
