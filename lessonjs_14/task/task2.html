@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 2</title>
+  </head>
+  <body>
+    <h2>
+      Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити,
+      який буде рік через N місяців.
+    </h2>
+    <script>
+      let dataObj = {
+        day: 25,
+        month: 3,
+        year: 2023,
+      };
+      function getYear({ year, month }, n) {
+        let totalMonth = month + n;
+        //if (totalMonth < 12) return year; якщо не показувати мiсяць то можна включити if щоб не робити зайвих розрахункiв
+        let restMonth = ((month - 1 + n) % 12) + 1;
+        let numberYears = (totalMonth - restMonth) / 12; // це щоб не застосовуват Math.floor
+        return [year + numberYears, restMonth];
+      }
+      let years = getYear(dataObj, 4);
+      document.write(
+        `<h3>  Наступить : ${years[1]} мiсяць та ${years[0]} рік</h3> `
+      );
+    </script>
+  </body>
+</html>

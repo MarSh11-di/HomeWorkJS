@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 1</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Описати масив об’єктів – сайтів розроблених компанією з такими
+      властивостями ----- Властивості ------ -назва компанії на час розробки
+      (назву періодично змінюють) - власник компанії -споснсори (масив
+      спонсорів) * прізвище спонсора * ім’я спонсора * сума вкладень спонсора
+      -рік випуску -вартість сайту
+      <script>
+        let webSiteArray = [
+          {
+            companyName: "Happy",
+            companyOwner: "Google",
+            sponsors: [
+              {
+                surname: "Ivanov",
+                name: "Ivan",
+                investment: 20000,
+              },
+              {
+                surname: "Petrov",
+                name: "Petr",
+                investment: 25000,
+              },
+              {
+                surname: "Sidorov",
+                name: "Semen",
+                investment: 26000,
+              },
+            ],
+            yearOfIstablishment: 2005,
+            siteCost: 30000,
+          },
+          {
+            companyName: "Fortune",
+            companyOwner: "Yahoo",
+            sponsors: [
+              {
+                surname: "Vasiliev",
+                name: "Vasilii",
+                investment: 30000,
+              },
+              {
+                surname: "Zagorulko",
+                name: "Zahar",
+                investment: 35000,
+              },
+              {
+                surname: "Stepanov",
+                name: "Stepan",
+                investment: 38000,
+              },
+            ],
+            yearOfIstablishment: 2000,
+            siteCost: 150000,
+          },
+          {
+            companyName: "Chance",
+            companyOwner: "Naver",
+            sponsors: [
+              {
+                surname: "Andreev",
+                name: "Andrei",
+                investment: 50000,
+              },
+              {
+                surname: "Sergeev",
+                name: "Sergei",
+                investment: 55000,
+              },
+              {
+                surname: "Romanov",
+                name: "Roman",
+                investment: 60000,
+              },
+            ],
+            yearOfIstablishment: 1999,
+            siteCost: 180000,
+          },
+          {
+            companyName: "Luck",
+            companyOwner: "Bing",
+            sponsors: [
+              {
+                surname: "Sevchenko",
+                name: "Taras",
+                investment: 450000,
+              },
+              {
+                surname: "Franko",
+                name: "Ivan",
+                investment: 50000,
+              },
+              {
+                surname: "Gogol",
+                name: "Nikolai",
+                investment: 63000,
+              },
+            ],
+            yearOfIstablishment: 2010,
+            siteCost: 2000000,
+          },
+        ];
+        console.log(webSiteArray);
+        //////Знайти:
+        //--------------------------1) загальну вартість усіх сайтів
+        const totalCost = webSiteArray.reduce(
+          (prevSum, site) => prevSum + site.siteCost,
+          0
+        );
+        document.write(
+          `<h3> Загальна вартість усіх сайтів: ${totalCost} euro.</h3> `
+        );
+        ///-----------------------2) кількість сайтів, що було зроблено між 2000 та 2009 рр.
+        let numberSitesIstablishmentBetween00_09 = webSiteArray.reduce(
+          (prevSum, site) => {
+            if (
+              site.yearOfIstablishment >= 2000 &&
+              site.yearOfIstablishment <= 2009
+            )
+              return ++prevSum;
+            else return prevSum;
+          },
+          0
+        );
+        document.write(
+          `<h3> Кількість сайтів, що було зроблено між 2000 та 2009 рр.: ${numberSitesIstablishmentBetween00_09} </h3> `
+        );
+        ///---------------------3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000--------------
+        //1 варiант через reduce
+        let numberSiteMore_100t = webSiteArray.reduce((prevTotal, spons) => {
+          let sumInvest = spons.sponsors.reduce(
+            (prevSum, inv) => (prevSum += inv.investment),
+            0
+          );
+          if (sumInvest > 100000) return ++prevTotal;
+          else return prevTotal;
+        }, 0);
+        document.write(
+          `<h3> Кількість сайтів, де сума спонсорських вкладень була більшою за 100000: ${numberSiteMore_100t} </h3> `
+        );
+        //  //2 варiант через for of
+        /*let numSiteMore_100t = 0;
+                        for (const site of webSiteArray) {
+                          let count1 = 0;
+                          for (const sponsor of site.sponsors) {
+                            count1 += sponsor.investment;
+                          }
+                          if (count1 > 100000) ++numSiteMore_100t;
+                          else numSiteMore_100t;
+                        }
+                        document.write(
+                          `<h3> Кількість сайтів, де сума спонсорських вкладень була більшою за 100000: ${numSiteMore_100t} </h3> `
+                        );*/
+        //
+        //--------------4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+        // 1 варiант
+        let sponsorsList = [];
+        for (const el of webSiteArray) {
+          for (const sponsor of el.sponsors) {
+            sponsorsList.push(`${sponsor.surname} ${sponsor.name}`);
+          }
+        }
+        document.write(
+          `<h3> Загальний список усіх спонсорів: ${sponsorsList} </h3> `
+        );
+        // 2 варiант
+        /* let sponsList = webSiteArray.map((el) =>
+                          el.sponsors.map((spon) => `${spon.surname} ${spon.name}`)
+                        );
+                        document.write(
+                          `<h3> Загальний список усіх спонсорів: ${sponsList} </h3> `
+                        );*/
+        //
+        //------------------5) Знайти рік, коли прибуток був найбільшим------------------
+        let max = -Infinity;
+        let yerMaxProfit;
+        for (const cost of webSiteArray) {
+          if (cost.siteCost > max) {
+            max = cost.siteCost;
+            yerMaxProfit = cost.yearOfIstablishment;
+          }
+        }
+        document.write(
+          `<h3>Прибуток у ${max} euro  був найбільшим у ${yerMaxProfit} році  </h3> `
+        );
+        // ----------------6) упорядкувати список за спаданням прибутку-----------
+        // 1 варiант
+        //let listArrey = JSON.parse(JSON.stringify(webSiteArray));
+        // listArrey.sort((cost1, cost2) => cost2.siteCost - cost1.siteCost);
+        //console.log(listArrey);
+        //2 вариант
+        let listCost = webSiteArray.map((cost) => cost.siteCost);
+        let copyWebArray = JSON.parse(JSON.stringify(webSiteArray));
+        for (i = 1; i < listCost.length; i++) {
+          let elemKey = listCost[i];
+          let objKey = copyWebArray[i];
+          let index = i - 1;
+          while (index >= 0 && listCost[index] < elemKey) {
+            [listCost[index], listCost[index + 1]] = [
+              listCost[index + 1],
+              listCost[index],
+            ];
+            [copyWebArray[index], copyWebArray[index + 1]] = [
+              copyWebArray[index + 1],
+              copyWebArray[index],
+            ];
+            index = index - 1;
+          }
+        }
+        console.log(copyWebArray);
+
+        //7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+        let listCostLess_10 = webSiteArray.filter(
+          (cost) => cost.siteCost < 10000
+        );
+        console.log(listCostLess_10);
+        let listCostMore_10 = webSiteArray.filter(
+          (cost) => cost.siteCost > 10000
+        );
+        console.log(listCostMore_10);
+        // 2 варiант
+        let listMore_10 = [];
+        let listLess_10 = [];
+        for (let cost of webSiteArray) {
+          cost.siteCost >= 10000
+            ? listMore_10.push({ ...cost })
+            : listLess_10.push({ ...cost });
+        }
+        console.log(listMore_10);
+        console.log(listLess_10);
+      </script>
+    </h2>
+  </body>
+</html>
