@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 3</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Розробити клас MultChecker для перевірки таблиці множення. Поля: 1)Число,
+      яке перевіряємо (наприклад, перевірка частини таблиці множення на 7);
+      2)Кількість правильних відповідей; 3)Кількість неправильних відповідей;
+      Методи: 1)Генерування прикладу (метод випадковим чином визначає друге
+      число, перше число фіксоване); 2)Перевірка правильності вказаної
+      відповіді; 3) render - виведення інформації про тестування на екран
+    </h2>
+    <script>
+      class MultChecker {
+        constructor(fixedNumberToMultiply) {
+          this.fixedNumberToMultiply = fixedNumberToMultiply;
+          this.numbersCorrectAnswers = 0;
+          this.numberWrongAnswer = 0;
+        }
+        //Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване),
+        //Будемо перевiряти таблицю множення вiд 1 до 10.
+        getRandomNumberToMultiply() {
+          const rendom = 1 + Math.floor(Math.random() * 10);
+          const correctAnswer = this.fixedNumberToMultiply * rendom;
+          const question = parseInt(
+            prompt(`Дайте вiдповiдь ${this.fixedNumberToMultiply}* ${rendom}`)
+          );
+          return { correctAnswer, question };
+        }
+        //Перевірка правильності вказаної   відповіді
+        getCheckResponse() {
+          do {
+            let { correctAnswer, question } = this.getRandomNumberToMultiply();
+            if (question === correctAnswer) this.numbersCorrectAnswers += 1;
+            else this.numberWrongAnswer += 1;
+          } while (confirm("Бажаете продовжити?"));
+        }
+        // render - виведення інформації про тестування на екран
+        render() {
+          document.write(`<h3>Перевiрка знань таблицi множення на ${this.fixedNumberToMultiply} <br> 
+            Кiлькiсть правильних вiдповiдей : ${this.numbersCorrectAnswers} <br>
+            Кiлькiсть неправильних вiдповiдей : ${this.numberWrongAnswer}</h3>`);
+        }
+      }
+      let mult = new MultChecker(7);
+      //mult.getRandomNumberToMultiply();
+      mult.getCheckResponse();
+      mult.render();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 0</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з
+      них є функція знаходження суми, а у іншому – функція для знаходження
+      добутку тих, які знаходяться між заданими мінімальним і максимальних
+      значенням. Використати обидва методи стосовно обидвох об’єктів
+      (використати call, apply)
+    </h2>
+    <script>
+      let number1 = {
+        wholeNumbers: [25, 15, 2, 56, 78, 34],
+        showSum: function () {
+          return this.wholeNumbers.reduce((prevSum, elem) => prevSum + elem, 0);
+        },
+        toString: function () {
+          return `<h3>Массив даних першого об’єкта ${
+            this.wholeNumbers
+          } <br> Сума числе першого об’єкта: ${this.showSum()}</h3> <br> `;
+        },
+      };
+      document.write(number1);
+      // 2-3 варiанти виведення без toString
+      /*let x = number1.showSum();
+      document.write(`Массив даних:${number1.wholeNumbers} <br> Сума числе : ${x}`);*/
+      /*document.write(
+        `Массив даних 3:${
+          number1.wholeNumbers
+        } <br> Сума чисел3 : ${number1.showSum()}<br>`
+      );*/
+      let number2 = {
+        wholeNumbers: [46, 17, 5, 95, 29, 56],
+        multiplyNumbers: function (min, max) {
+          let mult = 1;
+          for (let elem of this.wholeNumbers) {
+            if (elem >= min && elem <= max) mult *= elem;
+          }
+          return mult;
+          // 2 варiант з reduce
+          //multiplyNumbers: function (min, max) {
+          //return this.wholeNumbers.reduce((prevNum, elem)=> elem>=min && elem<=max?prevNum*elem:prevNum,1 )}
+        },
+      };
+      let multi = number2.multiplyNumbers(5, 95);
+      document.write(
+        `<h3>Массив даних другого об’єкта ${number2.wholeNumbers} <br> Добуток чисел другого об’єкта : ${multi} <br></h3>`
+      );
+      //  Використати обидва методи стосовно обидвох об’єктів (використати call, apply)
+
+      let applyForNumber1 = number2.multiplyNumbers.apply(number1, [10, 60]);
+      document.write(
+        `<h3>"Добуток чисел першого об’єкта" : ${applyForNumber1} </h3>`
+      );
+
+      let callForNumber2 = number1.showSum.call(number2);
+      document.write(
+        `<h3>"Cума чисел другого об’єкта" : ${callForNumber2}</h3>`
+      );
+
+      /// це для меня
+      /*let y = number2.multiplyNumbers.bind(number2);
+      let xt = y(5, 95);
+      console.log(xt);
+      document.write(` Добуток числе : ${y}<br>`);
+      document.write(y);*/
+      /////
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 4</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Розробити клас Baner. Поля: Масив об’єктів ( графічних зображень та
+      посилань на сайти). Mетоди: 1) Метод випадкового вибору об’єкта
+      (графічного зображення та посилання). 2)Метод виведення випадкового банера
+    </h2>
+    <script>
+      let banerArray = [
+        {
+          image: "../img/cherry1.png",
+          link: "https://en.wikipedia.org/wiki/Cherry",
+        },
+        {
+          image: "../img/heart2.png",
+          link: "https://en.wikipedia.org/wiki/Heart",
+        },
+        {
+          image: "../img/lemon3.png",
+          link: "https://en.wikipedia.org/wiki/Lemon",
+        },
+        {
+          image: "../img/banana4.png",
+          link: "https://it.wikipedia.org/wiki/Banana",
+        },
+      ];
+      class Baner {
+        constructor(arrayBaner) {
+          this.arrayBaner = arrayBaner;
+        }
+        getRandomBaner() {
+          const random = Math.floor(Math.random() * this.arrayBaner.length);
+          return this.arrayBaner[random];
+        }
+        getShowBaner() {
+          let baner = this.getRandomBaner();
+          document.write(
+            `<img src = "${baner.image}"> <br> <a href ="${baner.link}">...Link...</a>`
+          );
+        }
+      }
+      let banera = new Baner(banerArray);
+      banera.getShowBaner();
+    </script>
+  </body>
+</html>

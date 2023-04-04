@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 1</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є
+      заєць і 0 в іншому випадку. Поля(властивості):Масив, у якому зберігається
+      поле з зайцями. Методи (дії):Метод пострілу (задається позиція пострілу),
+      виведення ігрового поля
+    </h2>
+    <script>
+      function ShootingRange(fieldLength, numberOfHares) {
+        // длинна поля
+        this.fieldLength = fieldLength;
+        // количество зайцев
+        this.numberOfHares = numberOfHares;
+        // СГЕНЕРИРОВАННЫЙ МАСИВ
+        this.fieldWithHares = this.getPositionHares(fieldLength, numberOfHares);
+      }
+      // Генерую масив з зайцями
+      ShootingRange.prototype.getPositionHares = function (
+        fieldLength,
+        numberOfHares
+      ) {
+        let position = new Array(fieldLength).fill(0);
+        for (let i = 0; i < this.numberOfHares; i++) {
+          let randomIndex = Math.floor(Math.random() * (this.fieldLength - 1));
+          if (position[randomIndex] === 0) position[randomIndex] = 1;
+          else i--;
+        }
+        return position;
+      };
+      // Визначаю у користувача куди стрiляти
+      ShootingRange.prototype.getPositionShot = function () {
+        const positionShot = parseInt(
+          prompt("Введiть номер клiтинки для пострiлу вiд 1 до 6", "4")
+        );
+        return this.fieldWithHares[positionShot - 1];
+      };
+      // Поле гри
+      ShootingRange.prototype.getPlayingField = function () {
+        do {
+          if (this.getPositionShot() === 1) alert("Ви вбили зайця");
+          else alert("Ви промахнулися");
+        } while (confirm("Хочете продовжити?"));
+      };
+
+      let r = new ShootingRange(6, 3);
+      let t = r.getPositionHares(6, 3);
+      let h = r.getPlayingField();
+      document.write(`<h3>МАССИВ з розположенням зайцiв ${t}</h3>`);
+    </script>
+  </body>
+</html>

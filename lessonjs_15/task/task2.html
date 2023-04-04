@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 2</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Створити об’єкт «Авто». Поля(властивості):Марка, Розмір бака, Кількість
+      наявних літрів, Кількість місць, Кількість пасажирів. Методи
+      (дії):Заправка на вказану кількість літрів, Виведення кількості пасажирів,
+      Додавання пасажирів ,Висадка пасажирів.
+    </h2>
+    <script>
+      function Auto(
+        model,
+        tankSize,
+        numberLiters,
+        numberSeats,
+        numberPassengers
+      ) {
+        this.model = model;
+        this.tankSize = tankSize;
+        this.numberLiters = numberLiters;
+        this.numberSeats = numberSeats;
+        this.numberPassengers = numberPassengers;
+      }
+      //Заправка на вказану кількість літрів
+      Auto.prototype.refuelingLiters = function (addNumberLiters) {
+        if (this.numberLiters + addNumberLiters <= this.tankSize)
+          this.numberLiters = this.numberLiters + addNumberLiters;
+        else
+          return alert(
+            `Це забагто ви можете заправити лише ${
+              this.tankSize - this.numberLiters
+            } лiтрiв`
+          );
+      };
+      //Додавання пасажирів
+      Auto.prototype.addingPassengers = function (newNumberPassengers) {
+        if (this.numberPassengers + newNumberPassengers <= this.numberSeats)
+          this.numberPassengers = this.numberPassengers + newNumberPassengers;
+        else
+          return alert(
+            `Це забагто  може зайти лише ${
+              this.numberSeats - this.numberPassengers
+            } пасажирів`
+          );
+      };
+      //Висадка пасажирів
+      Auto.prototype.exitPassengers = function (numbersPassForExit) {
+        if (this.numberPassengers >= numbersPassForExit)
+          this.numberPassengers = this.numberPassengers - numbersPassForExit;
+        else
+          return alert(
+            `Помилка, намагаеться вийти на  ${
+              numbersPassForExit - this.numberPassengers
+            } пасажирiв бiльше чим е у авто`
+          );
+      };
+      //Виведення кількості пасажирів
+      Auto.prototype.toString = function () {
+        return `<h3> Кiлькiсть пасажирiв складае ${this.numberPassengers}</h3> `;
+      };
+      let auto = new Auto("Opel", 100, 50, 22, 8);
+      auto.refuelingLiters(80);
+      auto.addingPassengers(5);
+      auto.exitPassengers(34);
+      document.write(auto);
+    </script>
+  </body>
+</html>
