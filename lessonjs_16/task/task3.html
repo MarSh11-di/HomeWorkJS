@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 3</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Об’єкт “Фірма” (використати члени-класи). Поля:1)назва фірми; 2)дата
+      заснування (рік, місяць); 3)послуги (назва послуги, вартість, термін
+      виконання); 4)адреси філіалів (країна, місто, вулиця, номер будинку);
+      Mетоди:1)визначення кількості років існування фірми; 2)виведення всіх
+      філіалів фірми у вказаному місті; 3)виведення на екран послуг, що можуть
+      бути виконані за вказану суму грошей та вказаний термін часу;
+    </h2>
+    <script>
+      class DataFoundationCompani {
+        constructor(year, mounth) {
+          this.year = year;
+          this.mounth = mounth;
+        }
+      }
+      class ServicesCompani {
+        constructor(serviceName, price, deadline) {
+          this.serviceName = serviceName;
+          this.price = price;
+          this.deadline = deadline;
+        }
+        toString() {
+          return `Послуга:${this.serviceName} -${this.price} грн. за ${this.deadline} дн. `;
+        }
+      }
+      class BranchAddresesCompany {
+        constructor(country, city, street, numberHouse) {
+          this.country = country;
+          this.city = city;
+          this.street = street;
+          this.numberHouse = numberHouse;
+        }
+        toString() {
+          return `street:${this.street},numberHouse:${this.numberHouse} `;
+        }
+      }
+      class Compani {
+        constructor(companyName, { year, mounth }) {
+          this.companyName = companyName;
+          this.dataFoundation = new DataFoundationCompani(year, mounth);
+          this.service = [];
+          this.branchAddreses = [];
+        }
+        addService(servis) {
+          return this.service.push(servis);
+        }
+        addBranch(branche) {
+          return this.branchAddreses.push(branche);
+        }
+        get NumberYearsExistenceCompany() {
+          return new Date().getFullYear() - this.dataFoundation.year;
+        }
+        AllBranchesInCity(city) {
+          for (const branch of this.branchAddreses) {
+            if (city === branch.city)
+              document.write(`<h3>Фiлiали мiста ${city}:${branch}<br></h3>`);
+          }
+        }
+        ServicesForMoneyAndTime(money, time) {
+          //let sum = 0;
+          //let serv = [];
+          for (let elem of this.service)
+            if (money >= elem.price && time >= elem.deadline)
+              document.write(
+                `<h3>Послуги, що можуть бути виконані за вказану суму грошей: ${money} грн. та вказаний термін часу ${time}днiв:<br>${elem}<br></h3>`
+              );
+        }
+        toString() {
+          return `<h3>Кількiсть років існування фірми: ${this.NumberYearsExistenceCompany}</h3> <br>
+              `;
+        }
+      }
+      let company = new Compani("Fox", { year: 1978, mounth: 10 });
+      // Додаемо послуги
+      company.addService(new ServicesCompani("repair", 100, 3));
+      company.addService(new ServicesCompani("wash", 200, 2));
+      company.addService(new ServicesCompani("ironing", 150, 1));
+      //Додаемо фiлiали
+      company.addBranch(
+        new BranchAddresesCompany("Ukraina", "Dnipro", "Gogola", "12")
+      );
+      company.addBranch(
+        new BranchAddresesCompany("Ukraina", "Dnipro", "Navina", "34")
+      );
+      company.addBranch(
+        new BranchAddresesCompany("Poland", "Gdansk", "Mariyki", "18b")
+      );
+      company.addBranch(
+        new BranchAddresesCompany("Poland", "Warshava", "Kuka", "65")
+      );
+      company.AllBranchesInCity("Dnipro");
+      company.ServicesForMoneyAndTime(450, 2);
+      console.log(company);
+      document.write(company);
+    </script>
+  </body>
+</html>

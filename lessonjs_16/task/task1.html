@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 1</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Створити клас TDate для роботи із датами у форматі “день.місяць.рік”. Дата
+      представляється структурою із трьома полями. Реалізувати методи
+      збільшення/зменшення дати на певну кількість днів, місяців чи років.
+      Введення та виведення дати реалізувати за допомогою методу toString.
+    </h2>
+    <script>
+      class TDate {
+        constructor(initDay, initMonth, initYear) {
+          this.year = initYear;
+          this.day = initDay;
+          this.month = initMonth;
+        }
+        getIncreaseYear(newYear) {
+          this.year = this.year + newYear;
+        }
+        getInccreaseMonth(newMonth) {
+          this.month = this.month + newMonth;
+          this.getIncreaseYear(Math.floor(this.month / 12));
+          this.month = this.month % 12;
+        }
+        getDateIncrease(newDay) {
+          this.day = this.day + newDay;
+          this.getInccreaseMonth(Math.floor(this.day / 30));
+          this.day = this.day % 30;
+        }
+        getDecreaseYear(newYear) {
+          this.year = this.year - newYear;
+        }
+        getDecreaseMonth(newMonth) {
+          if (this.month < newMonth) {
+            let year1 = Math.ceil((newMonth - this.month + 1) / 12);
+            this.getDecreaseYear(year1);
+            this.month = this.month + year1 * 12 - newMonth;
+          } else this.month = this.month - newMonth;
+        }
+
+        getDecreaseDay(newDay) {
+          if (this.day < newDay) {
+            let day1 = Math.ceil((newDay - this.day + 1) / 30);
+            this.getDecreaseMonth(day1);
+            this.day = this.day + day1 * 30 - newDay;
+          } else this.day = this.day - newDay;
+        }
+        toString() {
+          return `${this.day}: ${this.month}:${this.year}`;
+        }
+      }
+      let d = new TDate(20, 2, 2023);
+      d.getDateIncrease(56);
+      d.getDecreaseMonth(5);
+      d.getDecreaseDay(45);
+      document.write(d);
+    </script>
+  </body>
+</html>

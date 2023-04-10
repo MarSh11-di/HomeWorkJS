@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 4</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Створити клас TBankomat, який моделює роботу банкомата. Клас повинен
+      містити поля для зберігання кількості купюр кожного із номіналів від 5 до
+      200 гривень. Реалізувати методи знаходження максимальної та мінімальної
+      сум, які може видати банкомат, та метод зняття деякої суми.
+    </h2>
+    <script>
+      class Banknotes {
+        #quantity;
+        #nominal;
+        constructor(nominal, quantity) {
+          this.Nominal = nominal;
+          this.Quantity = quantity;
+        }
+        get Quantity() {
+          return this.#quantity;
+        }
+        get Nominal() {
+          return this.#nominal;
+        }
+        set Quantity(value) {
+          if (value < 0) throw new Error("Значення некоректне");
+          this.#quantity = value;
+        }
+        set Nominal(value) {
+          if (value < 5 || value > 200) throw new Error("Значення некоректне");
+          this.#nominal = value;
+        }
+        toString() {
+          return `${this.nominal} -${this.quantity} `;
+        }
+      }
+      class TBankomat {
+        constructor(bancnoteList) {
+          this.bancnoteList = bancnoteList;
+        }
+        get MinSum() {
+          for (let bancnot of this.bancnoteList) {
+            if (bancnot.Quantity !== 0) return bancnot.Nominal;
+          }
+          return 0;
+        }
+        get MaxSum() {
+          return this.bancnoteList.reduce(
+            (prevSum, elem) => prevSum + elem.Nominal * elem.Quantity,
+            0
+          );
+        }
+        TakeMoney(value) {
+          if (value > this.MaxSum)
+            return document.write(
+              `У банкоматi недостатньо коштiв, можемо видати лише ${this.MaxSum} грн.<br> `
+            );
+
+          for (
+            let i = this.bancnoteList.length - 1;
+            i >= 0 && value !== 0;
+            i--
+          ) {
+            if (
+              value >=
+              this.bancnoteList[i].Nominal * this.bancnoteList[i].Quantity
+            ) {
+              value -=
+                this.bancnoteList[i].Nominal * this.bancnoteList[i].Quantity;
+              this.bancnoteList[i].Quantity -= this.bancnoteList[i].Quantity;
+            }
+            if (
+              value >= this.bancnoteList[i].Nominal &&
+              value <
+                this.bancnoteList[i].Nominal * this.bancnoteList[i].Quantity
+            ) {
+              this.bancnoteList[i].Quantity -= Math.floor(
+                value / this.bancnoteList[i].Nominal
+              );
+              value = value % this.bancnoteList[i].Nominal;
+            }
+          }
+          if (value < this.MinSum && value !== 0)
+            return document.write(
+              `У банкоматi мiнiмальна купюра ${this.MinSum} грн, збiльшiть вашу суму <br>`
+            );
+        }
+        toString() {
+          return `Мінімальна сума: ${this.MinSum} грн. <br> Максимальна сума:${this.MaxSum}грн.<br>`;
+        }
+      }
+
+      let bancnotes = [
+        new Banknotes(5, 15),
+        new Banknotes(10, 20),
+        new Banknotes(50, 10),
+        new Banknotes(100, 5),
+        new Banknotes(200, 20),
+      ];
+      let money = new TBankomat(bancnotes);
+      money.TakeMoney(1235);
+      console.log(bancnotes);
+      document.write(money);
+    </script>
+  </body>
+</html>

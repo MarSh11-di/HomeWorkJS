@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 2</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Створити клас TMoney для роботи з грошовими сумами. Сума повинна
+      зберігатися у вигляді доларового еквіваленту. Реалізувати методи
+      додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та
+      визначення курсу долара, при якому сума у гривнях збільшиться на 100. Курс
+      долара зберігати в окремому полі.
+    </h2>
+    <script>
+      class TMoney {
+        #dollar;
+        constructor(amountDollar, dollarExchangeRate) {
+          this.Dollar = amountDollar;
+          this.dollarExchangeRate = dollarExchangeRate;
+          this.dollarExchangeProfit =
+            this.getdollarExchangeProfit(amountDollar);
+        }
+        get Dollar() {
+          return this.#dollar;
+        }
+        set Dollar(newAmountDollar) {
+          if (newAmountDollar < 0)
+            throw new Error("Cума у гривнi вказана не вiрно");
+          this.#dollar = newAmountDollar;
+        }
+        getIncreaseMoney(amountHryvnia) {
+          this.Dollar = this.Dollar + amountHryvnia / this.dollarExchangeRate;
+        }
+        getDecreaseMoney(amountHryvnia) {
+          this.Dollar = this.Dollar - amountHryvnia / this.dollarExchangeRate;
+        }
+        getdollarExchangeProfit(amountDollar) {
+          let profit = 100;
+          let dollarExchangeProfit =
+            (this.Dollar * this.dollarExchangeRate + profit) / this.Dollar;
+          return dollarExchangeProfit;
+        }
+
+        toString() {
+          return `Ваш баланс : ${this.Dollar.toFixed(
+            2
+          )} дол.<br> Звичайний курс дол.:${
+            this.dollarExchangeRate
+          } <br> Курс дол. для отримання прибутку у 100 грн.: ${
+            this.dollarExchangeProfit
+          }`;
+        }
+      }
+      let money = new TMoney(250, 38);
+      money.getIncreaseMoney(5000);
+      money.getDecreaseMoney(3000);
+      money.getdollarExchangeProfit();
+      document.write(money);
+    </script>
+  </body>
+</html>
