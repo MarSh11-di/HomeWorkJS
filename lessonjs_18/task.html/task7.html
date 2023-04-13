@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 7</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>
+      Подорож складається з 3 етапів. На кожному етапі користувач може вибрати
+      один з видів транспорту (авто, автобус, літак - випадаючий список),
+      харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х
+      гідів(використати - radio buttons). Ціни визначте самі. Підрахувати
+      загальну вартість.
+    </h2>
+    <div>
+      Транспорт
+      <select id="transport">
+        <option value="0">Вибрати</option>
+        <option value="20">авто - 20 euro</option>
+        <option value="15">автобус - 15 euro</option>
+        <option value="100">лiтак - 100 euro</option>
+      </select>
+    </div>
+    <div class="food">
+      Харчування:
+      <label>
+        Cнiданок-10 euro
+        <input type="checkbox" name="food" value="10" />
+      </label>
+      <label>
+        Обiд-15 euro
+        <input type="checkbox" name="food" value="15" />
+      </label>
+      <label>
+        Вечеря-20 euro
+        <input type="checkbox" name="food" value="20" />
+      </label>
+    </div>
+    <div class="guides">
+      Вибiр гiда:
+      <input type="radio" name="guid" id="ivan" value="50" />
+      <label for="ivan"> Iван - 50 euro</label>
+      <input type="radio" name="guid" id="maria" value="60" />
+      <label for="maria"> Марiя - 60 euro</label>
+      <input type="radio" name="guid" id="petro" value="70" />
+      <label for="petro"> Петро - 70 euro</label>
+    </div>
+    <button id="but">Pозрахувати</button>
+    <div>Загальна вартiсть подорожi:<span id="result"></span></div>
+    <script src="../js/script7.js"></script>
+  </body>
+</html>
